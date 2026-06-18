@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="fr">
-<head>
+<html lang="fr"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Naël Imberti</title>
 <meta name="description" content="Portfolio de Naël Imberti, étudiant-entrepreneur, SNEE Pépite Normandie, lauréat Proj'Impact 2026.">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%239440DD'/><text x='50%' y='72%' text-anchor='middle' font-family='serif' font-size='20' font-weight='700' fill='white'>N</text></svg>">
+<link rel="icon" href="data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'&gt;&lt;rect width='32' height='32' rx='8' fill='%239440DD'/&gt;&lt;text x='50%' y='72%' text-anchor='middle' font-family='serif' font-size='20' font-weight='700' fill='white'&gt;N&lt;/text&gt;&lt;/svg&gt;">
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700;1,800&family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -238,9 +238,51 @@ footer a{color:var(--muted);text-decoration:none}
 .mobile-menu ul{list-style:none;display:flex;flex-direction:column;gap:1.4rem}
 .mobile-menu ul a{color:var(--muted);font-size:1.05rem;font-weight:500;text-decoration:none;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;transition:color 0.2s}
 .mobile-menu ul a:hover{color:var(--text)}
+
+/* ── DYNAMIC ENHANCEMENTS ── */
+/* scroll progress */
+.scroll-progress{position:fixed;top:0;left:0;height:3px;width:100%;transform:scaleX(0);transform-origin:0 50%;background:linear-gradient(to right,var(--accent),var(--al));z-index:300;transition:transform 0.08s linear;box-shadow:0 0 12px var(--glow)}
+/* aurora ambient bg */
+.aurora{position:fixed;inset:0;z-index:-2;overflow:hidden;pointer-events:none}
+.aurora span{position:absolute;border-radius:50%;filter:blur(90px);will-change:transform}
+.aurora .a1{width:520px;height:520px;background:rgba(148,64,221,0.20);top:-140px;left:-120px;animation:auroraA 19s ease-in-out infinite}
+.aurora .a2{width:440px;height:440px;background:rgba(120,80,225,0.14);bottom:-160px;right:-120px;animation:auroraB 24s ease-in-out infinite}
+.aurora .a3{width:380px;height:380px;background:rgba(80,120,220,0.09);top:42%;left:54%;animation:auroraC 28s ease-in-out infinite}
+@keyframes auroraA{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(90px,70px) scale(1.12)}}
+@keyframes auroraB{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-80px,-60px) scale(1.1)}}
+@keyframes auroraC{0%,100%{transform:translate(0,0)}50%{transform:translate(-70px,50px)}}
+@media(prefers-reduced-motion:reduce){.aurora span{animation:none}.role-rotator{transition:none}}
+/* rotating role */
+.role-rotator{display:inline-block;transition:opacity 0.34s ease,transform 0.34s ease;will-change:opacity,transform}
+.role-rotator.out{opacity:0;transform:translateY(-9px)}
+/* photo orb spinning ring */
+.photo-orb{position:relative;display:inline-block}
+.photo-orb::before{content:'';position:absolute;inset:-16px;border-radius:50%;background:conic-gradient(from 0deg,transparent 0deg,var(--accent) 90deg,transparent 200deg,var(--al) 300deg,transparent 360deg);animation:orbSpin 9s linear infinite;opacity:0.45;filter:blur(8px);z-index:-1}
+@keyframes orbSpin{to{transform:rotate(360deg)}}
+/* cursor spotlight + tilt on cards */
+[data-tilt]{transition:transform 0.2s cubic-bezier(.2,.7,.3,1),border-color 0.25s;transform-style:preserve-3d;will-change:transform}
+.card::after{background:radial-gradient(circle 240px at var(--mx,70%) var(--my,20%),rgba(148,64,221,0.18),transparent 65%)}
+.home-section-card::after{content:'';position:absolute;inset:0;background:radial-gradient(circle 260px at var(--mx,50%) var(--my,40%),rgba(148,64,221,0.16),transparent 62%);opacity:0;transition:opacity 0.3s;pointer-events:none}
+.home-section-card:hover::after{opacity:1}
+/* skills marquee */
+.marquee{position:relative;overflow:hidden;margin-top:3.5rem;-webkit-mask-image:linear-gradient(to right,transparent,#000 7%,#000 93%,transparent);mask-image:linear-gradient(to right,transparent,#000 7%,#000 93%,transparent)}
+.marquee-track{display:flex;gap:0.9rem;width:max-content;animation:marquee 34s linear infinite}
+.marquee:hover .marquee-track{animation-play-state:paused}
+@keyframes marquee{to{transform:translateX(-50%)}}
+.mq-chip{flex:none;display:inline-flex;align-items:center;gap:9px;padding:9px 18px;border:1px solid var(--border);border-radius:99px;font-size:13px;color:var(--muted);background:var(--bg2);font-weight:500;white-space:nowrap;letter-spacing:0.01em;transition:color 0.2s,border-color 0.2s}
+.mq-chip:hover{color:var(--text);border-color:var(--border2)}
+.mq-chip .d{width:5px;height:5px;border-radius:50%;background:var(--accent);flex:none}
+.marquee-label{font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:1.2rem}
+/* stagger reveal helper */
+.reveal-d4{transition-delay:0.4s}.reveal-d5{transition-delay:0.5s}
 </style>
 </head>
 <body>
+
+
+
+<div class="scroll-progress" id="scroll-progress"></div>
+<div class="aurora" aria-hidden="true"><span class="a1"></span><span class="a2"></span><span class="a3"></span></div>
 
 <!-- NAV -->
 <nav>
@@ -274,7 +316,7 @@ footer a{color:var(--muted);text-decoration:none}
       <div class="hero-left">
         <div class="hero-tag"><span class="dot"></span>Étudiant-Entrepreneur · SNEE Pépite Normandie</div>
         <span class="hero-name">Naël Imberti</span>
-        <span class="hero-role">Business Developer en formation</span>
+        <span class="hero-role"><span class="role-rotator" id="roleRotator">Business Developer</span></span>
         <p class="hero-sub">L3 Gestion Management à l'IAE Rouen. Objectif : devenir Business Developer avec un ancrage fort dans le commerce responsable et durable. Je construis des projets à impact à l'intersection de l'entrepreneuriat, du business et du management.</p>
         <div class="hero-ctas">
           <button class="btn btn-primary" onclick="nav('entrepreneur')">Mes projets</button>
@@ -282,7 +324,7 @@ footer a{color:var(--muted);text-decoration:none}
         </div>
       </div>
       <div class="hero-right">
-        <img src="photo.webp" alt="Naël Imberti" class="hero-photo-circle">
+        <div class="photo-orb"><img src="photo.webp" alt="Naël Imberti" class="hero-photo-circle"></div>
       </div>
     </div>
   </section>
@@ -292,37 +334,44 @@ footer a{color:var(--muted);text-decoration:none}
       <div class="reveal">
         <p class="s-label">À propos</p>
         <h2 class="s-title">Construire solidement,<br>pas rapidement</h2>
-        <p class="s-sub">Après deux années en Double Licence Mathématiques & Économie, j'ai choisi une réorientation vers la gestion et l'entrepreneuriat. Mon moteur : des projets à impact, portés avec méthode.</p>
+        <p class="s-sub">Après deux années en Double Licence Mathématiques &amp; Économie, j'ai choisi une réorientation vers la gestion et l'entrepreneuriat. Mon moteur : des projets à impact, portés avec méthode.</p>
       </div>
       <div class="divider"></div>
       <div class="stats-row">
-        <div class="stat-card reveal reveal-d1"><div class="stat-num ac">3</div><div class="stat-label">Projets entrepreneuriaux</div></div>
+        <div class="stat-card reveal reveal-d1"><div class="stat-num ac count" data-to="3">0</div><div class="stat-label">Projets entrepreneuriaux</div></div>
         <div class="stat-card reveal reveal-d1"><div class="stat-num ac">2026</div><div class="stat-label">Lauréat Proj'Impact</div></div>
-        <div class="stat-card reveal reveal-d2"><div class="stat-num">2</div><div class="stat-label">Expériences terrain</div></div>
+        <div class="stat-card reveal reveal-d2"><div class="stat-num count" data-to="2">0</div><div class="stat-label">Expériences terrain</div></div>
         <div class="stat-card reveal reveal-d2"><div class="stat-num">IAE</div><div class="stat-label">Rouen Normandie · L3</div></div>
       </div>
 
-      <div class="home-sections reveal" style="margin-top:4rem">
-        <div class="home-section-card" onclick="nav('etudes')">
+      <div class="reveal" style="margin-top:4rem">
+        <div class="marquee-label">Savoir-faire</div>
+        <div class="marquee">
+          <div class="marquee-track" id="skillTrack"></div>
+        </div>
+      </div>
+
+      <div class="home-sections reveal" style="margin-top:3.5rem">
+        <div class="home-section-card" data-tilt="" onclick="nav('etudes')">
           <div class="hsc-num">01</div>
           <div class="hsc-label">Formation</div>
           <div class="hsc-title">Études</div>
           <p class="hsc-desc">IAE Rouen · Université de Rouen. Double cursus, réorientation stratégique vers l'entrepreneuriat.</p>
-          <div class="hsc-arrow">Voir la formation <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+          <div class="hsc-arrow">Voir la formation <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"></path></svg></div>
         </div>
-        <div class="home-section-card" onclick="nav('entrepreneur')">
+        <div class="home-section-card" data-tilt="" onclick="nav('entrepreneur')">
           <div class="hsc-num">02</div>
           <div class="hsc-label">Projets</div>
           <div class="hsc-title">Étudiant-Entrepreneur</div>
           <p class="hsc-desc">Silva Edita primé au concours Proj'Impact, Naillies développé sur 6 mois au programme Jeunes Pousses, ARGOS en développement personnel. Trois démarches, trois approches.</p>
-          <div class="hsc-arrow">Voir les projets <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+          <div class="hsc-arrow">Voir les projets <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"></path></svg></div>
         </div>
-        <div class="home-section-card" onclick="nav('experiences')">
+        <div class="home-section-card" data-tilt="" onclick="nav('experiences')">
           <div class="hsc-num">03</div>
           <div class="hsc-label">Terrain</div>
           <div class="hsc-title">Expériences</div>
           <p class="hsc-desc">BOC LAB · Atelier Reflet d'Espace. Missions concrètes en gestion de projet et développement commercial.</p>
-          <div class="hsc-arrow">Voir les expériences <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+          <div class="hsc-arrow">Voir les expériences <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"></path></svg></div>
         </div>
       </div>
     </div>
@@ -332,7 +381,7 @@ footer a{color:var(--muted);text-decoration:none}
 <!-- ═══════════════════════════════════════ PAGE : ÉTUDES ═══════════════════════════════════════ -->
 <div class="page" id="page-etudes">
   <div class="container pt-hero">
-    <button class="back-btn" onclick="nav('')"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg> Accueil</button>
+    <button class="back-btn" onclick="nav('')"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"></path></svg> Accueil</button>
     <div class="reveal">
       <p class="s-label">Formation</p>
       <h2 class="s-title">Études</h2>
@@ -340,27 +389,27 @@ footer a{color:var(--muted);text-decoration:none}
     </div>
     <div class="divider"></div>
     <div class="cards-grid" style="margin-bottom:5rem">
-      <div class="card reveal" style="--cg:rgba(148,64,221,0.08)" onclick="nav('etudes/l3')">
+      <div class="card reveal" data-tilt="" style="--cg:rgba(148,64,221,0.08)" onclick="nav('etudes/l3')">
         <span class="badge badge-active">À venir</span>
         <div class="card-year">Sept. 2026 · Juin 2027</div>
         <div class="card-title">L3 Gestion · Parcours Management</div>
         <div class="card-org">IAE Rouen Normandie · SNEE Pépite Normandie</div>
         <p class="card-desc">Réorientation stratégique vers la gestion et le management. Double statut étudiant et étudiant-entrepreneur reconnu nationalement.</p>
-        <div class="card-more">Voir le détail <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        <div class="card-more">Voir le détail <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"></path></svg></div>
       </div>
-      <div class="card reveal reveal-d1" style="--cg:rgba(100,140,220,0.06)" onclick="nav('etudes/dl')">
+      <div class="card reveal reveal-d1" data-tilt="" style="--cg:rgba(100,140,220,0.06)" onclick="nav('etudes/dl')">
         <div class="card-year">Sept. 2024 · Juin 2026</div>
         <div class="card-title">Double Licence Mathématiques &amp; Économie</div>
         <div class="card-org">Université de Rouen Normandie · BAC+2</div>
         <p class="card-desc">Formation pluridisciplinaire associant raisonnement analytique, outils quantitatifs et compréhension des enjeux économiques. Python, statistiques, algèbre.</p>
-        <div class="card-more">Voir le détail <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        <div class="card-more">Voir le détail <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"></path></svg></div>
       </div>
-      <div class="card reveal reveal-d2" style="--cg:rgba(80,180,160,0.05)" onclick="nav('etudes/bac')">
+      <div class="card reveal reveal-d2" data-tilt="" style="--cg:rgba(80,180,160,0.05)" onclick="nav('etudes/bac')">
         <div class="card-year">Sept. 2021 · Juin 2024</div>
         <div class="card-title">Baccalauréat Général</div>
         <div class="card-org">Lycée Simone Veil · Liffré (35)</div>
         <p class="card-desc">Mention Bien · 14,63/20. Spécialités Mathématiques et SES. LV3 Japonais et Mathématiques expertes. Grand oral 14/20, Philosophie 18/20.</p>
-        <div class="card-more">Voir le détail <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        <div class="card-more">Voir le détail <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"></path></svg></div>
       </div>
     </div>
 
@@ -401,7 +450,7 @@ footer a{color:var(--muted);text-decoration:none}
 <div class="page" id="page-etudes/l3">
   <div class="container">
     <div class="detail-header">
-      <button class="back-btn" onclick="nav('etudes')"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg> Études</button>
+      <button class="back-btn" onclick="nav('etudes')"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"></path></svg> Études</button>
       <div class="detail-meta">
         <span class="detail-tag">Sept. 2026 · Juin 2027</span>
         <span class="detail-tag">À venir</span>
@@ -459,7 +508,7 @@ footer a{color:var(--muted);text-decoration:none}
 <div class="page" id="page-etudes/bac">
   <div class="container">
     <div class="detail-header">
-      <button class="back-btn" onclick="nav('etudes')"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg> Études</button>
+      <button class="back-btn" onclick="nav('etudes')"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"></path></svg> Études</button>
       <div class="detail-meta">
         <span class="detail-tag">Sept. 2021 · Juin 2024</span>
         <span class="detail-tag">Mention Bien</span>
@@ -475,10 +524,10 @@ footer a{color:var(--muted);text-decoration:none}
           <div class="detail-section">
             <div class="detail-section-title">Résultats</div>
             <div class="stats-row" style="grid-template-columns:1fr 1fr;margin-top:0">
-              <div class="stat-card"><div class="stat-num ac">14,63</div><div class="stat-label">Moyenne finale / 20</div></div>
+              <div class="stat-card"><div class="stat-num ac count" data-to="14.63" data-dec="2">0</div><div class="stat-label">Moyenne finale / 20</div></div>
               <div class="stat-card"><div class="stat-num ac">Bien</div><div class="stat-label">Mention</div></div>
-              <div class="stat-card"><div class="stat-num">18</div><div class="stat-label">Philosophie / 20</div></div>
-              <div class="stat-card"><div class="stat-num">14</div><div class="stat-label">Grand oral / 20</div></div>
+              <div class="stat-card"><div class="stat-num count" data-to="18">0</div><div class="stat-label">Philosophie / 20</div></div>
+              <div class="stat-card"><div class="stat-num count" data-to="14">0</div><div class="stat-label">Grand oral / 20</div></div>
             </div>
           </div>
           <div class="detail-section" style="margin-top:2rem">
@@ -524,7 +573,7 @@ footer a{color:var(--muted);text-decoration:none}
 <div class="page" id="page-etudes/dl">
   <div class="container">
     <div class="detail-header">
-      <button class="back-btn" onclick="nav('etudes')"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg> Études</button>
+      <button class="back-btn" onclick="nav('etudes')"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"></path></svg> Études</button>
       <div class="detail-meta">
         <span class="detail-tag">Sept. 2024 · Juin 2026</span>
         <span class="detail-tag">BAC+2</span>
@@ -560,7 +609,7 @@ footer a{color:var(--muted);text-decoration:none}
 <!-- ═══════════════════════════════════════ PAGE : ENTREPRENEUR ═══════════════════════════════════════ -->
 <div class="page" id="page-entrepreneur">
   <div class="container pt-hero">
-    <button class="back-btn" onclick="nav('')"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg> Accueil</button>
+    <button class="back-btn" onclick="nav('')"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"></path></svg> Accueil</button>
     <div class="reveal">
       <p class="s-label">Étudiant-Entrepreneur</p>
       <h2 class="s-title">Projets entrepreneuriaux</h2>
@@ -579,29 +628,29 @@ footer a{color:var(--muted);text-decoration:none}
     </div>
     <div class="cards-grid" style="margin-bottom:5rem">
 
-      <div class="card reveal" style="--cg:rgba(148,64,221,0.08)" onclick="nav('entrepreneur/silva-edita')">
+      <div class="card reveal" data-tilt="" style="--cg:rgba(148,64,221,0.08)" onclick="nav('entrepreneur/silva-edita')">
         <div class="award-ribbon">Proj'Impact 2026</div>
         <div class="badge badge-purple">Concours · Univ. Rouen</div>
         <div class="card-title">Silva Edita</div>
         <div class="card-org">Infrastructure de résilience urbaine · Rouen</div>
         <p class="card-desc">Toitures végétalisées intelligentes pour Rouen. Projet primé au concours Proj'Impact organisé par l'Université de Rouen, la Ville et Pépite Normandie.</p>
-        <div class="card-more">Voir le projet <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        <div class="card-more">Voir le projet <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"></path></svg></div>
       </div>
 
-      <div class="card reveal reveal-d1" style="--cg:rgba(100,140,220,0.07)" onclick="nav('entrepreneur/naillies')">
+      <div class="card reveal reveal-d1" data-tilt="" style="--cg:rgba(100,140,220,0.07)" onclick="nav('entrepreneur/naillies')">
         <div class="badge badge-blue">Jeunes Pousses · 2025–2026</div>
         <div class="card-title">Naillies</div>
         <div class="card-org">Programme entrepreneurial · Université de Rouen</div>
         <p class="card-desc">Box DIY de manucure semi-permanente. 6 mois de formation entrepreneuriale : business model canvas, étude de marché, prévisionnel financier 3 ans, statut juridique et pitch final.</p>
-        <div class="card-more">Voir le projet <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        <div class="card-more">Voir le projet <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"></path></svg></div>
       </div>
 
-      <div class="card reveal reveal-d2" style="--cg:rgba(80,180,160,0.07)" onclick="nav('entrepreneur/argos')">
+      <div class="card reveal reveal-d2" data-tilt="" style="--cg:rgba(80,180,160,0.07)" onclick="nav('entrepreneur/argos')">
         <div class="badge badge-teal">Projet personnel · 2026</div>
         <div class="card-title">ARGOS</div>
         <div class="card-org">Autonomous Risk-Governed Optimization System</div>
         <p class="card-desc">Système multi-agents d'analyse financière autonome. IA appliquée aux marchés, gestion du risque et boucle d'apprentissage continu.</p>
-        <div class="card-more">Voir le projet <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        <div class="card-more">Voir le projet <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"></path></svg></div>
       </div>
 
     </div>
@@ -612,7 +661,7 @@ footer a{color:var(--muted);text-decoration:none}
 <div class="page" id="page-entrepreneur/naillies">
   <div class="container">
     <div class="detail-header">
-      <button class="back-btn" onclick="nav('entrepreneur')"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg> Projets</button>
+      <button class="back-btn" onclick="nav('entrepreneur')"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"></path></svg> Projets</button>
       <div class="detail-meta">
         <span class="detail-tag">Jeunes Pousses 2025–2026</span>
         <span class="detail-tag">Université de Rouen</span>
@@ -690,7 +739,7 @@ footer a{color:var(--muted);text-decoration:none}
 <div class="page" id="page-entrepreneur/silva-edita">
   <div class="container">
     <div class="detail-header">
-      <button class="back-btn" onclick="nav('entrepreneur')"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg> Projets</button>
+      <button class="back-btn" onclick="nav('entrepreneur')"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"></path></svg> Projets</button>
       <div class="detail-meta">
         <span class="detail-tag">Lauréat Proj'Impact 2026</span>
         <span class="detail-tag">Université de Rouen · Ville · Pépite</span>
@@ -725,10 +774,10 @@ footer a{color:var(--muted);text-decoration:none}
           <div class="detail-section">
             <div class="detail-section-title">Résultats mesurables</div>
             <div class="stats-row" style="grid-template-columns:1fr 1fr;margin-top:0">
-              <div class="stat-card"><div class="stat-num ac">-70%</div><div class="stat-label">ruissellement</div></div>
-              <div class="stat-card"><div class="stat-num ac">-35%</div><div class="stat-label">consommation énergie</div></div>
-              <div class="stat-card"><div class="stat-num ac">-2,4°C</div><div class="stat-label">îlot de chaleur</div></div>
-              <div class="stat-card"><div class="stat-num ac">40%</div><div class="stat-label">conformité loi Climat</div></div>
+              <div class="stat-card"><div class="stat-num ac count" data-to="-70" data-suf="%">0</div><div class="stat-label">ruissellement</div></div>
+              <div class="stat-card"><div class="stat-num ac count" data-to="-35" data-suf="%">0</div><div class="stat-label">consommation énergie</div></div>
+              <div class="stat-card"><div class="stat-num ac count" data-to="-2.4" data-dec="1" data-suf="°C">0</div><div class="stat-label">îlot de chaleur</div></div>
+              <div class="stat-card"><div class="stat-num ac count" data-to="40" data-suf="%">0</div><div class="stat-label">conformité loi Climat</div></div>
             </div>
           </div>
           <div class="detail-section" style="margin-top:2rem">
@@ -758,7 +807,7 @@ footer a{color:var(--muted);text-decoration:none}
 <div class="page" id="page-entrepreneur/argos">
   <div class="container">
     <div class="detail-header">
-      <button class="back-btn" onclick="nav('entrepreneur')"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg> Projets</button>
+      <button class="back-btn" onclick="nav('entrepreneur')"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"></path></svg> Projets</button>
       <div class="detail-meta">
         <span class="detail-tag">Projet personnel</span>
         <span class="detail-tag">En développement · 2026</span>
@@ -825,7 +874,7 @@ footer a{color:var(--muted);text-decoration:none}
 <!-- ═══════════════════════════════════════ PAGE : EXPÉRIENCES ═══════════════════════════════════════ -->
 <div class="page" id="page-experiences">
   <div class="container pt-hero">
-    <button class="back-btn" onclick="nav('')"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg> Accueil</button>
+    <button class="back-btn" onclick="nav('')"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"></path></svg> Accueil</button>
     <div class="reveal">
       <p class="s-label">Terrain</p>
       <h2 class="s-title">Expériences</h2>
@@ -846,7 +895,7 @@ footer a{color:var(--muted);text-decoration:none}
           <span class="tag">Dossier ERP</span>
           <span class="tag">Modèle économique</span>
         </div>
-        <button class="tl-more" onclick="nav('experiences/boclab')">Voir le détail <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+        <button class="tl-more" onclick="nav('experiences/boclab')">Voir le détail <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"></path></svg></button>
       </div>
 
       <div class="tl-item reveal reveal-d1">
@@ -862,7 +911,7 @@ footer a{color:var(--muted);text-decoration:none}
           <span class="tag">LinkedIn · Instagram</span>
           <span class="tag">Supports de prospection</span>
         </div>
-        <button class="tl-more" onclick="nav('experiences/atelier')">Voir le détail <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+        <button class="tl-more" onclick="nav('experiences/atelier')">Voir le détail <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"></path></svg></button>
       </div>
 
     </div>
@@ -873,7 +922,7 @@ footer a{color:var(--muted);text-decoration:none}
 <div class="page" id="page-experiences/boclab">
   <div class="container">
     <div class="detail-header">
-      <button class="back-btn" onclick="nav('experiences')"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg> Expériences</button>
+      <button class="back-btn" onclick="nav('experiences')"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"></path></svg> Expériences</button>
       <div class="detail-meta">
         <span class="detail-tag">Stage · 6 semaines</span>
         <span class="detail-tag">2026</span>
@@ -936,7 +985,7 @@ footer a{color:var(--muted);text-decoration:none}
 <div class="page" id="page-experiences/atelier">
   <div class="container">
     <div class="detail-header">
-      <button class="back-btn" onclick="nav('experiences')"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg> Expériences</button>
+      <button class="back-btn" onclick="nav('experiences')"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"></path></svg> Expériences</button>
       <div class="detail-meta">
         <span class="detail-tag">Bénévole · Hybride</span>
         <span class="detail-tag">Mars 2026 · Aujourd'hui</span>
@@ -993,15 +1042,15 @@ footer a{color:var(--muted);text-decoration:none}
       <p>Étudiant-entrepreneur disponible pour des missions, stages ou échanges autour de l'entrepreneuriat, du développement commercial et du management.</p>
       <div class="contact-links">
         <a href="https://www.linkedin.com/in/nael-imberti" target="_blank" rel="noopener" class="contact-link">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path></svg>
           LinkedIn
         </a>
         <a href="mailto:nael.imberti.io@gmail.com" class="contact-link">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
           Email
         </a>
         <a href="https://github.com/naelimberti" target="_blank" rel="noopener" class="contact-link">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path></svg>
           GitHub
         </a>
       </div>
@@ -1090,8 +1139,86 @@ function render(hash) {
       el.classList.remove('visible');
       observer.observe(el);
     });
+
+    // count-up stats
+    const countObs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { animateCount(e.target); countObs.unobserve(e.target); }
+      });
+    }, { threshold: 0.4 });
+    target.querySelectorAll('.count').forEach(el => countObs.observe(el));
+
+    // bind cursor spotlight + tilt
+    bindCards(target);
   }, 50);
 }
+
+// ── COUNT-UP ──
+const reduceMotion = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+function animateCount(el) {
+  const to = parseFloat(el.dataset.to);
+  const dec = parseInt(el.dataset.dec || '0', 10);
+  const suf = el.dataset.suf || '';
+  const pre = el.dataset.pre || '';
+  const fmt = v => pre + v.toLocaleString('fr-FR', { minimumFractionDigits: dec, maximumFractionDigits: dec }) + suf;
+  if (reduceMotion) { el.textContent = fmt(to); return; }
+  const dur = 1400, start = performance.now();
+  function frame(now) {
+    let p = Math.min((now - start) / dur, 1);
+    p = 1 - Math.pow(1 - p, 3);
+    el.textContent = fmt(to * p);
+    if (p < 1) requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+}
+
+// ── CURSOR SPOTLIGHT + TILT ──
+function bindCards(scope) {
+  scope.querySelectorAll('[data-tilt]').forEach(card => {
+    if (card._tiltBound) return;
+    card._tiltBound = true;
+    card.addEventListener('pointermove', e => {
+      const r = card.getBoundingClientRect();
+      const x = e.clientX - r.left, y = e.clientY - r.top;
+      card.style.setProperty('--mx', x + 'px');
+      card.style.setProperty('--my', y + 'px');
+      if (reduceMotion) return;
+      const rx = ((y / r.height) - 0.5) * -5;
+      const ry = ((x / r.width) - 0.5) * 5;
+      card.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-4px)`;
+    });
+    card.addEventListener('pointerleave', () => { card.style.transform = ''; });
+  });
+}
+
+// ── SKILLS MARQUEE ──
+const SKILLS = ['Business Development','Entrepreneuriat','Pitch & Storytelling','Business Model Canvas','Étude de marché','Stratégie commerciale','Management','Finance d’entreprise','Analyse de données','Gestion de projet','Go-to-market','Négociation','Impact & durabilité','Python'];
+(function buildMarquee() {
+  const track = document.getElementById('skillTrack');
+  if (!track) return;
+  const chip = s => `<span class="mq-chip"><span class="d"></span>${s}</span>`;
+  track.innerHTML = (SKILLS.map(chip).join('')).repeat(2);
+})();
+
+// ── ROLE ROTATOR ──
+(function rotateRole() {
+  const rr = document.getElementById('roleRotator');
+  if (!rr || reduceMotion) return;
+  const roles = ['Business Developer','Étudiant-Entrepreneur','Lauréat Proj\u2019Impact 2026','Commerce responsable'];
+  let i = 0;
+  setInterval(() => {
+    rr.classList.add('out');
+    setTimeout(() => { i = (i + 1) % roles.length; rr.textContent = roles[i]; rr.classList.remove('out'); }, 340);
+  }, 2600);
+})();
+
+// ── SCROLL PROGRESS ──
+const _prog = document.getElementById('scroll-progress');
+window.addEventListener('scroll', () => {
+  const h = document.documentElement;
+  const max = h.scrollHeight - h.clientHeight;
+  _prog.style.transform = 'scaleX(' + (max > 0 ? h.scrollTop / max : 0) + ')';
+}, { passive: true });
 
 window.addEventListener('hashchange', () => render(window.location.hash));
 render(window.location.hash || '#');
@@ -1119,5 +1246,6 @@ function mobileNav(route) {
   document.getElementById('hamburger').classList.remove('open');
 }
 </script>
-</body>
-</html>
+
+
+</body></html>
