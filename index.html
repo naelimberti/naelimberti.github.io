@@ -175,10 +175,11 @@ h1 .role{display:block;color:var(--accent);font-weight:400}
 .tl-more:hover{color:var(--al)}
 
 /* ── DOCUMENT VIEWER ── */
-.doc-gallery{display:flex;gap:1rem;overflow-x:auto;padding:0.5rem 0 1.2rem;scrollbar-width:thin;scrollbar-color:var(--faint) transparent}
-.doc-gallery::-webkit-scrollbar{height:4px}
-.doc-gallery::-webkit-scrollbar-track{background:transparent}
-.doc-gallery::-webkit-scrollbar-thumb{background:var(--faint);border-radius:4px}
+.doc-gallery{display:flex;gap:1rem;overflow-x:auto;padding:0.5rem 0 1.4rem;scrollbar-width:thin;scrollbar-color:var(--border2) var(--bg3)}
+.doc-gallery::-webkit-scrollbar{height:6px}
+.doc-gallery::-webkit-scrollbar-track{background:var(--bg3);border-radius:4px}
+.doc-gallery::-webkit-scrollbar-thumb{background:var(--border2);border-radius:4px}
+.doc-gallery::-webkit-scrollbar-thumb:hover{background:var(--accent)}
 .doc-page{flex-shrink:0;border-radius:8px;overflow:hidden;border:1px solid var(--border2);cursor:zoom-in;transition:transform 0.2s,box-shadow 0.2s;background:var(--bg2)}
 .doc-page:hover{transform:scale(1.02);box-shadow:0 8px 30px rgba(148,64,221,0.2)}
 .doc-page img{display:block;height:340px;width:auto;object-fit:contain}
@@ -446,7 +447,7 @@ footer a{color:var(--muted);text-decoration:none}
           </div>
           <div class="doc-card" onclick="openLightbox('docs/reco_lelievre.jpg')">
             <img src="docs/reco_lelievre.jpg" alt="Lettre de recommandation Zoé Lelièvre" loading="lazy">
-            <div class="doc-card-label">Zoé Lelièvre</div>
+            <div class="doc-card-label">Zoé Lelièvre · Chargée d'accompagnement, Pépite Normandie</div>
           </div>
         </div>
       </div>
@@ -917,6 +918,15 @@ footer a{color:var(--muted);text-decoration:none}
             </div>
           </div>
         </div>
+      </div>
+      <div class="detail-section" style="margin-top:3rem">
+        <div class="detail-section-title">Documents</div>
+        <div class="doc-gallery">
+          <div class="doc-page" onclick="openLightbox('docs/convention_boclab_p1.jpg')"><img src="docs/convention_boclab_p1.jpg" alt="Convention p.1" loading="lazy"></div>
+          <div class="doc-page" onclick="openLightbox('docs/convention_boclab_p2.jpg')"><img src="docs/convention_boclab_p2.jpg" alt="Convention p.2" loading="lazy"></div>
+          <div class="doc-page" onclick="openLightbox('docs/convention_boclab_p3.jpg')"><img src="docs/convention_boclab_p3.jpg" alt="Convention p.3" loading="lazy"></div>
+        </div>
+        <p style="font-size:11px;color:var(--faint);margin-top:0.6rem;font-weight:300">Convention de stage signée · Appréciation de stage et lettre de recommandation à venir</p>
       </div>
     </div>
   </div>
