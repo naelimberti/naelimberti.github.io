@@ -1,19 +1,19 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="32" height="32">
-  <!-- Fond violet arrondi -->
   <rect width="100" height="100" rx="18" fill="#9440dd"/>
-  <!-- Rayons de soleil (bas droite) -->
-  <g stroke="#ffcc33" stroke-linecap="round" stroke-width="5.5">
-    <line x1="88" y1="88" x2="62" y2="72"/>
-    <line x1="88" y1="88" x2="55" y2="82"/>
-    <line x1="88" y1="88" x2="53" y2="93"/>
-    <line x1="88" y1="88" x2="70" y2="63"/>
-    <line x1="88" y1="88" x2="78" y2="58"/>
+
+  <!-- N hand-drawn : bottom-left → top-left → bottom-right → top-right -->
+  <polyline points="20,65 23,17 55,65 58,17"
+    fill="none" stroke="#ffcc33" stroke-width="11.5"
+    stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Rayons de soleil — origine coin bas-droite (88,91) -->
+  <g stroke="#ffcc33" stroke-linecap="round" fill="none">
+    <!-- 4 rayons droits -->
+    <line x1="88" y1="91" x2="69" y2="67" stroke-width="5.5"/>
+    <line x1="88" y1="91" x2="61" y2="73" stroke-width="5.5"/>
+    <line x1="88" y1="91" x2="55" y2="80" stroke-width="5.5"/>
+    <line x1="88" y1="91" x2="52" y2="87" stroke-width="5.5"/>
+    <!-- Arc courbe bas (soleil levant) -->
+    <path d="M 56,96 Q 70,100 82,94" stroke-width="6.5" fill="none"/>
   </g>
-  <!-- N gras arrondi en or -->
-  <path fill="#ffcc33" d="
-    M 14 72 C 12 72 11 71 11 68 L 11 30 C 11 27 12 26 15 26
-    L 22 26 C 25 26 27 27 29 30 L 48 57 L 48 30 C 48 27 49 26 52 26
-    L 59 26 C 62 26 63 27 63 30 L 63 68 C 63 71 62 72 59 72
-    L 52 72 C 49 72 47 71 45 68 L 26 41 L 26 68 C 26 71 25 72 22 72 Z
-  "/>
 </svg>
