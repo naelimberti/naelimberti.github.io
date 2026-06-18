@@ -174,6 +174,26 @@ h1 .role{display:block;color:var(--accent);font-weight:400}
 .tl-more{margin-top:1rem;display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--accent);cursor:pointer;border:none;background:none;font-family:var(--sans)}
 .tl-more:hover{color:var(--al)}
 
+/* ── DOCUMENT VIEWER ── */
+.doc-gallery{display:flex;gap:1rem;overflow-x:auto;padding:0.5rem 0 1.2rem;scrollbar-width:thin;scrollbar-color:var(--faint) transparent}
+.doc-gallery::-webkit-scrollbar{height:4px}
+.doc-gallery::-webkit-scrollbar-track{background:transparent}
+.doc-gallery::-webkit-scrollbar-thumb{background:var(--faint);border-radius:4px}
+.doc-page{flex-shrink:0;border-radius:8px;overflow:hidden;border:1px solid var(--border2);cursor:zoom-in;transition:transform 0.2s,box-shadow 0.2s;background:var(--bg2)}
+.doc-page:hover{transform:scale(1.02);box-shadow:0 8px 30px rgba(148,64,221,0.2)}
+.doc-page img{display:block;height:340px;width:auto;object-fit:contain}
+.doc-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1.2rem;margin-top:1rem}
+.doc-card{border-radius:10px;overflow:hidden;border:1px solid var(--border2);cursor:zoom-in;transition:transform 0.2s,box-shadow 0.2s;background:var(--bg2)}
+.doc-card:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(148,64,221,0.2)}
+.doc-card img{display:block;width:100%;height:auto;object-fit:cover}
+.doc-card-label{padding:0.6rem 0.8rem;font-size:11px;color:var(--muted);font-weight:500;letter-spacing:0.04em}
+/* Lightbox */
+.lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.9);z-index:999;align-items:center;justify-content:center;padding:1.5rem;cursor:zoom-out}
+.lightbox.open{display:flex}
+.lightbox img{max-width:100%;max-height:90vh;border-radius:8px;object-fit:contain;box-shadow:0 0 60px rgba(148,64,221,0.3)}
+.lightbox-close{position:fixed;top:1rem;right:1.5rem;color:#fff;font-size:2rem;cursor:pointer;line-height:1;opacity:0.7;background:none;border:none;font-family:var(--sans)}
+.lightbox-close:hover{opacity:1}
+
 /* ── TWO-COL DETAIL ── */
 .two-col{display:grid;grid-template-columns:1.1fr 0.9fr;gap:4rem;align-items:start}
 @media(max-width:760px){.two-col{grid-template-columns:1fr;gap:2rem}}
@@ -416,6 +436,20 @@ footer a{color:var(--muted);text-decoration:none}
           </div>
         </div>
       </div>
+      <div class="detail-section" style="margin-top:3rem">
+        <div class="detail-section-title">Lettres de recommandation</div>
+        <p class="detail-text" style="margin-bottom:1.2rem">Deux enseignantes-chercheuses ont soutenu ma candidature en L3 Gestion Management à l'IAE Rouen.</p>
+        <div class="doc-cards">
+          <div class="doc-card" onclick="openLightbox('docs/reco_cabon.jpg')">
+            <img src="docs/reco_cabon.jpg" alt="Lettre de recommandation Marie-Laure Cabon Dhersin" loading="lazy">
+            <div class="doc-card-label">Marie-Laure Cabon Dhersin</div>
+          </div>
+          <div class="doc-card" onclick="openLightbox('docs/reco_lelievre.jpg')">
+            <img src="docs/reco_lelievre.jpg" alt="Lettre de recommandation Zoé Lelièvre" loading="lazy">
+            <div class="doc-card-label">Zoé Lelièvre</div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -532,6 +566,16 @@ footer a{color:var(--muted);text-decoration:none}
       <p class="s-sub">Un concours d'idées, un programme de formation de 6 mois, un projet personnel. Trois démarches distinctes portées dans le cadre du Statut National d'Étudiant-Entrepreneur.</p>
     </div>
     <div class="divider"></div>
+    <div class="detail-section reveal" style="margin-bottom:2.5rem">
+      <div class="detail-section-title">Reconnu par Pépite Normandie</div>
+      <p style="font-size:0.9rem;color:var(--muted);margin-bottom:1rem;font-weight:300">Statut National d'Étudiant-Entrepreneur (SNEE) — avis favorable de la commission Pépite Normandie.</p>
+      <div class="doc-cards" style="grid-template-columns:minmax(0,320px)">
+        <div class="doc-card" onclick="openLightbox('docs/pepite.jpg')">
+          <img src="docs/pepite.jpg" alt="Avis commission Pépite Normandie" loading="lazy">
+          <div class="doc-card-label">Avis commission Pépite Normandie · SNEE</div>
+        </div>
+      </div>
+    </div>
     <div class="cards-grid" style="margin-bottom:5rem">
 
       <div class="card reveal" style="--cg:rgba(148,64,221,0.08)" onclick="nav('entrepreneur/silva-edita')">
@@ -619,6 +663,22 @@ footer a{color:var(--muted);text-decoration:none}
               <span class="tech-tag">Pitch jury</span>
             </div>
           </div>
+        </div>
+      </div>
+      <div class="detail-section" style="margin-top:3rem">
+        <div class="detail-section-title">Dossier final — Les Jeunes Pousses</div>
+        <p class="detail-text" style="margin-bottom:1rem">Livrable remis à l'issue des 6 mois de programme. Cliquez sur une page pour agrandir.</p>
+        <div class="doc-gallery">
+          <div class="doc-page" onclick="openLightbox('docs/jeunes_pousses_p1.jpg')"><img src="docs/jeunes_pousses_p1.jpg" alt="Page 1" loading="lazy"></div>
+          <div class="doc-page" onclick="openLightbox('docs/jeunes_pousses_p2.jpg')"><img src="docs/jeunes_pousses_p2.jpg" alt="Page 2" loading="lazy"></div>
+          <div class="doc-page" onclick="openLightbox('docs/jeunes_pousses_p3.jpg')"><img src="docs/jeunes_pousses_p3.jpg" alt="Page 3" loading="lazy"></div>
+          <div class="doc-page" onclick="openLightbox('docs/jeunes_pousses_p4.jpg')"><img src="docs/jeunes_pousses_p4.jpg" alt="Page 4" loading="lazy"></div>
+          <div class="doc-page" onclick="openLightbox('docs/jeunes_pousses_p5.jpg')"><img src="docs/jeunes_pousses_p5.jpg" alt="Page 5" loading="lazy"></div>
+          <div class="doc-page" onclick="openLightbox('docs/jeunes_pousses_p6.jpg')"><img src="docs/jeunes_pousses_p6.jpg" alt="Page 6" loading="lazy"></div>
+          <div class="doc-page" onclick="openLightbox('docs/jeunes_pousses_p7.jpg')"><img src="docs/jeunes_pousses_p7.jpg" alt="Page 7" loading="lazy"></div>
+          <div class="doc-page" onclick="openLightbox('docs/jeunes_pousses_p8.jpg')"><img src="docs/jeunes_pousses_p8.jpg" alt="Page 8" loading="lazy"></div>
+          <div class="doc-page" onclick="openLightbox('docs/jeunes_pousses_p9.jpg')"><img src="docs/jeunes_pousses_p9.jpg" alt="Page 9" loading="lazy"></div>
+          <div class="doc-page" onclick="openLightbox('docs/jeunes_pousses_p10.jpg')"><img src="docs/jeunes_pousses_p10.jpg" alt="Page 10" loading="lazy"></div>
         </div>
       </div>
     </div>
@@ -939,6 +999,12 @@ footer a{color:var(--muted);text-decoration:none}
   </div>
 </div>
 
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">×</button>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
 <footer>
   <p>© 2026 Naël Imberti · Rouen, Normandie · <a href="https://naelimberti.github.io" target="_blank" rel="noopener">naelimberti.github.io</a></p>
 </footer>
@@ -1019,6 +1085,17 @@ function render(hash) {
 
 window.addEventListener('hashchange', () => render(window.location.hash));
 render(window.location.hash || '#');
+
+function openLightbox(src) {
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 
 function toggleMobileMenu() {
   const menu = document.getElementById('mobile-menu');
