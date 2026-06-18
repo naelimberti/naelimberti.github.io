@@ -46,8 +46,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;backdrop-filter:blur(16px);b
 
 /* ── HERO SPLIT ── */
 .hero-split{text-align:left;padding:0}
-.hero-split-inner{max-width:1120px;margin:0 auto;padding:0 2rem;min-height:100vh;display:grid;grid-template-columns:1fr 380px;gap:5rem;align-items:center;position:relative;z-index:1}
-@media(max-width:860px){.hero-split-inner{grid-template-columns:1fr;gap:2rem;padding-top:5rem;padding-bottom:4rem}}
+.hero-split-inner{width:100%;padding-left:max(2rem,calc((100vw - 1120px) / 2 + 2rem));padding-right:3rem;min-height:100vh;display:grid;grid-template-columns:1fr 400px;gap:4rem;align-items:center;position:relative;z-index:1}
+@media(max-width:860px){.hero-split-inner{grid-template-columns:1fr;gap:2rem;padding:5rem 2rem 4rem;}}
 .hero-left{display:flex;flex-direction:column;align-items:flex-start}
 .hero-left .hero-tag{margin-bottom:2rem}
 .hero-name{font-family:var(--serif);font-size:clamp(2.6rem,4.2vw,4.5rem);font-weight:800;font-style:normal;line-height:1;letter-spacing:-0.03em;color:var(--text);display:block;margin-bottom:0.5rem;text-align:left;white-space:nowrap}
