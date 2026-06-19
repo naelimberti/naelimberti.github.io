@@ -228,6 +228,21 @@ footer a{color:var(--muted);text-decoration:none}
   .contact-box{padding:2.5rem 1.5rem}
   .detail-header{padding:5rem 0 2rem}
 }
+/* ── DROPDOWN NAV ── */
+.has-dropdown{position:relative}
+.has-dropdown>a{display:flex;align-items:center;gap:5px}
+.dp-chevron{width:10px;height:10px;transition:transform 0.18s;opacity:0.45;flex-shrink:0}
+.has-dropdown:hover .dp-chevron{transform:rotate(180deg);opacity:1}
+.dropdown{position:absolute;top:calc(100% + 12px);left:50%;transform:translateX(-50%) translateY(-6px);min-width:250px;background:rgba(8,8,20,0.97);backdrop-filter:blur(24px);border:1px solid var(--border2);border-radius:14px;padding:6px;opacity:0;visibility:hidden;transition:opacity 0.18s,visibility 0.18s,transform 0.18s;pointer-events:none;box-shadow:0 20px 60px rgba(0,0,0,0.65),0 0 0 1px rgba(148,64,221,0.06);z-index:400}
+.has-dropdown:hover .dropdown{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);pointer-events:auto}
+.dropdown::before{content:'';position:absolute;top:-5px;left:50%;transform:translateX(-50%) rotate(45deg);width:8px;height:8px;background:rgba(12,10,24,0.97);border-left:1px solid var(--border2);border-top:1px solid var(--border2);border-radius:1px}
+.dp-item{display:flex;flex-direction:column;gap:2px;padding:9px 13px;border-radius:9px;cursor:pointer;transition:background 0.14s;text-decoration:none;border:none;background:none;width:100%;text-align:left;font-family:var(--sans)}
+.dp-item:hover{background:rgba(148,64,221,0.11)}
+.dp-overview{border-bottom:1px solid var(--border);margin-bottom:5px;padding-bottom:11px}
+.dp-name{font-size:12px;font-weight:600;color:var(--text);letter-spacing:0.01em;white-space:nowrap}
+.dp-overview .dp-name{color:var(--al)}
+.dp-sub{font-size:10px;color:var(--muted);font-weight:400;margin-top:2px;white-space:nowrap}
+
 /* ── HAMBURGER ── */
 .hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:6px;flex-shrink:0}
 .hamburger span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:all 0.22s}
@@ -293,9 +308,33 @@ footer a{color:var(--muted);text-decoration:none}
   <div class="nav-inner">
     <a class="nav-logo" onclick="nav('')">Naël<span>.</span></a>
     <ul class="nav-links" id="nav-links">
-      <li><a onclick="nav('etudes')" data-route="etudes">Études</a></li>
-      <li><a onclick="nav('entrepreneur')" data-route="entrepreneur">Entrepreneur</a></li>
-      <li><a onclick="nav('experiences')" data-route="experiences">Expériences</a></li>
+      <li class="has-dropdown">
+        <a onclick="nav('etudes')" data-route="etudes">Études<svg class="dp-chevron" viewBox="0 0 10 10" fill="none"><path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <div class="dropdown">
+          <button class="dp-item dp-overview" onclick="nav('etudes')"><span class="dp-name">Parcours complet</span></button>
+          <button class="dp-item" onclick="nav('etudes/l3')"><span class="dp-name">L3 Gestion</span><span class="dp-sub">IAE Rouen · 2026-2027</span></button>
+          <button class="dp-item" onclick="nav('etudes/dl')"><span class="dp-name">Double Licence Maths &amp; Éco</span><span class="dp-sub">2024-2026 · Campus Pasteur × Madrillet</span></button>
+          <button class="dp-item" onclick="nav('etudes/bac')"><span class="dp-name">Bac Général</span><span class="dp-sub">2021-2024 · Lycée Simone Veil 35</span></button>
+        </div>
+      </li>
+      <li class="has-dropdown">
+        <a onclick="nav('entrepreneur')" data-route="entrepreneur">Entrepreneur<svg class="dp-chevron" viewBox="0 0 10 10" fill="none"><path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <div class="dropdown">
+          <button class="dp-item dp-overview" onclick="nav('entrepreneur')"><span class="dp-name">Projets entrepreneuriaux</span></button>
+          <button class="dp-item" onclick="nav('entrepreneur/silva-edita')"><span class="dp-name">Silva Edita</span><span class="dp-sub">Proj'Impact 2026</span></button>
+          <button class="dp-item" onclick="nav('entrepreneur/naillies')"><span class="dp-name">Naillies</span><span class="dp-sub">Jeunes Pousses 2026</span></button>
+          <button class="dp-item" onclick="nav('entrepreneur/argos')"><span class="dp-name">ARGOS</span><span class="dp-sub">Projet personnel</span></button>
+        </div>
+      </li>
+      <li class="has-dropdown">
+        <a onclick="nav('experiences')" data-route="experiences">Expériences<svg class="dp-chevron" viewBox="0 0 10 10" fill="none"><path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <div class="dropdown">
+          <button class="dp-item dp-overview" onclick="nav('experiences')"><span class="dp-name">Toutes les expériences</span></button>
+          <button class="dp-item" onclick="nav('experiences')"><span class="dp-name">Responsable Développement Commercial</span><span class="dp-sub">Junior Entreprise · IAE Rouen</span></button>
+          <button class="dp-item" onclick="nav('experiences/boclab')"><span class="dp-name">Bras droit du dirigeant</span><span class="dp-sub">BOC LAB</span></button>
+          <button class="dp-item" onclick="nav('experiences/atelier')"><span class="dp-name">Appui au développement de l'activité</span><span class="dp-sub">Atelier Reflet d'Espace</span></button>
+        </div>
+      </li>
       <li><a onclick="nav('contact')" data-route="contact">Contact</a></li>
     </ul>
     <div class="nav-breadcrumb" id="breadcrumb" style="display:none"></div>
