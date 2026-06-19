@@ -71,8 +71,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;backdrop-filter:blur(16px);b
 /* ── TITRES : shimmer animé sur h1 uniquement ── */
 @keyframes band-move{from{background-position-x:0px}to{background-position-x:var(--bandw,200px)}}
 h1{background-image:linear-gradient(115deg,#fff 0%,#f4ecff 22%,var(--gold) 50%,#f4ecff 78%,#fff 100%);background-size:var(--bandw,200px) 100%;background-repeat:repeat;background-position-x:0px;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;color:transparent;animation:band-move 5s linear infinite}
-/* ── SOUS-TITRES : or fixe sans animation ── */
-h2,h3,.s-title,.detail-title,.tl-title,.card-title,.hsc-title,.contact-box h2,.detail-section-title{color:var(--gold);-webkit-text-fill-color:var(--gold);background:none;animation:none}
+/* ── SOUS-TITRES : dégradé blanc → or fixe ── */
+h2,h3,.s-title,.detail-title,.tl-title,.card-title,.hsc-title,.contact-box h2,.detail-section-title{background:linear-gradient(115deg,#fff 0%,#f4ecff 35%,var(--gold) 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;animation:none}
 @media(prefers-reduced-motion:reduce){h1,.hero-name{animation:none}}
 .s-sub{font-size:1rem;color:var(--muted);max-width:580px;font-weight:300;line-height:1.8}
 .divider{width:40px;height:2px;background:linear-gradient(to right,var(--accent),var(--gold),transparent);margin:1.8rem 0}
@@ -428,7 +428,7 @@ footer a{color:var(--muted);text-decoration:none}
         <div class="hero-tag"><span class="dot"></span>Étudiant-Entrepreneur · SNEE Pépite Normandie</div>
         <span class="hero-name">Naël Imberti</span>
         <span class="hero-role"><span class="role-rotator" id="roleRotator">Business Developer en formation</span></span>
-        <p class="hero-sub">Je cherche à rejoindre une startup à impact (ESS, durable, internationale) pour prospecter, réseauter, vendre et faire grandir quelque chose en lequel je crois. L3 Gestion Management à l'IAE Rouen, statut étudiant-entrepreneur SNEE Pépite Normandie.</p>
+        <p class="hero-sub">Construire solidement. Vendre honnêtement. Grandir avec les bonnes personnes.</p>
         <div class="hero-ctas">
           <button class="btn btn-primary" onclick="nav('entrepreneur')">Mes projets</button>
           <button class="btn btn-ghost" onclick="nav('contact')">Me contacter</button>
