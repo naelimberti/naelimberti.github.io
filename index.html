@@ -216,6 +216,36 @@ h1 .role{display:block;color:var(--accent);font-weight:400}
 .contact-links{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
 .contact-link{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border:1px solid var(--border2);border-radius:99px;color:var(--muted);text-decoration:none;font-size:13px;font-weight:500;transition:all 0.22s;background:rgba(148,64,221,0.04)}
 .contact-link:hover{color:var(--text);border-color:var(--accent);background:var(--adim)}
+/* ── CONTACT PAGE v2 ── */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:3rem}
+@media(max-width:760px){.contact-grid{grid-template-columns:1fr}}
+.contact-panel{background:var(--bg2);border:1px solid var(--border);border-radius:20px;padding:2.5rem;position:relative;overflow:hidden}
+.contact-panel-main{border-color:var(--border2);background:linear-gradient(135deg,var(--bg2),rgba(148,64,221,0.05))}
+.contact-panel-main::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,var(--accent),var(--gold),transparent)}
+.contact-avail{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:#4ade80;background:rgba(74,222,128,0.08);border:1px solid rgba(74,222,128,0.2);padding:6px 16px;border-radius:99px;margin-bottom:2rem}
+.contact-avail .dot-green{width:6px;height:6px;border-radius:50%;background:#4ade80;animation:dot-blink 2s ease-in-out infinite;flex-shrink:0}
+.contact-panel h2{font-family:var(--serif);font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700;letter-spacing:-0.02em;line-height:1.1;margin-bottom:1rem}
+.contact-panel h2 em{font-style:normal;color:var(--gold)}
+.contact-panel-desc{font-size:0.93rem;color:var(--muted);line-height:1.85;font-weight:300;margin-bottom:2rem}
+.contact-ctas{display:flex;flex-direction:column;gap:0.75rem}
+.contact-cta{display:flex;align-items:center;gap:14px;padding:14px 18px;border:1px solid var(--border2);border-radius:14px;color:var(--text);text-decoration:none;font-size:14px;font-weight:500;transition:all 0.22s;background:rgba(148,64,221,0.03);cursor:pointer}
+.contact-cta:hover{border-color:var(--accent);background:var(--adim);transform:translateX(4px)}
+.contact-cta-icon{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.contact-cta-icon.li{background:rgba(10,102,194,0.15);color:#0a66c2}
+.contact-cta-icon.mail{background:rgba(255,204,51,0.1);color:var(--gold)}
+.contact-cta-icon.gh{background:rgba(255,255,255,0.06);color:var(--text)}
+.contact-cta-body{display:flex;flex-direction:column;gap:2px}
+.contact-cta-label{font-size:13px;font-weight:600;color:var(--text)}
+.contact-cta-sub{font-size:11px;color:var(--muted);font-weight:400}
+.contact-arrow{margin-left:auto;color:var(--accent);opacity:0;transition:opacity 0.2s}
+.contact-cta:hover .contact-arrow{opacity:1}
+.contact-info-panel{display:flex;flex-direction:column;gap:1.5rem}
+.contact-info-card{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:1.8rem}
+.contact-info-label{font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:0.8rem}
+.contact-info-content{font-size:0.93rem;color:var(--muted);line-height:1.75;font-weight:300}
+.contact-info-content strong{color:var(--text);font-weight:600}
+.contact-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:0.8rem}
+.contact-tag-item{font-size:11px;font-weight:500;padding:4px 12px;border-radius:99px;border:1px solid var(--border);color:var(--muted);background:var(--bg3)}
 
 /* ── FOOTER ── */
 footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-size:12px;color:var(--faint)}
@@ -341,7 +371,7 @@ footer a{color:var(--muted);text-decoration:none}
           <button class="dp-item dp-overview" onclick="nav('entrepreneur')"><span class="dp-name">Projets entrepreneuriaux</span></button>
           <button class="dp-item" onclick="nav('entrepreneur/silva-edita')"><span class="dp-name">Silva Edita</span><span class="dp-sub">Proj'Impact 2026</span></button>
           <button class="dp-item" onclick="nav('entrepreneur/naillies')"><span class="dp-name">Naillies</span><span class="dp-sub">Jeunes Pousses 2026</span></button>
-          <button class="dp-item" onclick="nav('entrepreneur/argos')"><span class="dp-name">ARGOS</span><span class="dp-sub">Projet personnel</span></button>
+          <button class="dp-item" onclick="nav('entrepreneur/argos')"><span class="dp-name">ARGOS</span><span class="dp-sub">Bot de trading BTC</span></button>
         </div>
       </li>
       <li class="has-dropdown">
@@ -690,16 +720,16 @@ footer a{color:var(--muted);text-decoration:none}
       <div class="card reveal reveal-d1" data-tilt="" style="--cg:rgba(100,140,220,0.07)" onclick="nav('entrepreneur/naillies')">
         <div class="badge badge-blue">Jeunes Pousses · 2025–2026</div>
         <div class="card-title">Naillies</div>
-        <div class="card-org">Programme entrepreneurial · Université de Rouen</div>
-        <p class="card-desc">Box DIY de manucure semi-permanente. 6 mois de formation entrepreneuriale : business model canvas, étude de marché, prévisionnel financier 3 ans, statut juridique et pitch final.</p>
+        <div class="card-org">Léa Portmann · Programme entrepreneurial · Université de Rouen</div>
+        <p class="card-desc">Box DIY de manucure semi-permanente. Co-construction du projet sur 6 mois : business model, étude de marché, prévisionnel financier 3 ans, statut juridique et pitch final.</p>
         <div class="card-more">Voir le projet <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"></path></svg></div>
       </div>
 
-      <div class="card reveal reveal-d2" data-tilt="" style="--cg:rgba(80,180,160,0.07)" onclick="nav('entrepreneur/argos')">
-        <div class="badge badge-teal">Projet personnel · 2026</div>
+      <div class="card reveal reveal-d2" data-tilt="" style="--cg:rgba(80,200,160,0.07)" onclick="nav('entrepreneur/argos')">
+        <div class="badge badge-teal">Bot BTC · 2026</div>
         <div class="card-title">ARGOS</div>
-        <div class="card-org">Autonomous Risk-Governed Optimization System</div>
-        <p class="card-desc">Système multi-agents d'analyse financière autonome. IA appliquée aux marchés, gestion du risque et boucle d'apprentissage continu.</p>
+        <div class="card-org">Bot de trading spécialisé Bitcoin</div>
+        <p class="card-desc">Bot multi-agents focalisé sur le Bitcoin, conçu pour fructifier des petites sommes et démocratiser l'accès à cet univers. IA, gestion du risque et apprentissage continu.</p>
         <div class="card-more">Voir le projet <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"></path></svg></div>
       </div>
 
@@ -863,8 +893,8 @@ footer a{color:var(--muted);text-decoration:none}
         <span class="detail-tag">En développement · 2026</span>
       </div>
       <div class="detail-title">ARGOS</div>
-      <div class="detail-sub">Autonomous Risk-Governed Optimization System</div>
-      <p class="detail-desc">Projet personnel de recherche et développement visant à concevoir un système multi-agents d'analyse financière capable d'observer les marchés, simuler des décisions d'investissement, apprendre de ses erreurs et améliorer progressivement ses stratégies.</p>
+      <div class="detail-sub">Bot de trading spécialisé Bitcoin · Démocratiser l'accès au BTC</div>
+      <p class="detail-desc">Bot multi-agents focalisé sur le Bitcoin, conçu pour fructifier des petites sommes et rendre cet univers accessible à tous. L'idée : que quelqu'un qui ne connaît rien aux marchés puisse bénéficier d'une stratégie rigoureuse, sans avoir à comprendre les rouages techniques.</p>
     </div>
     <div class="detail-body">
       <div class="two-col">
@@ -884,8 +914,8 @@ footer a{color:var(--muted);text-decoration:none}
           <div class="detail-section" style="margin-top:2.5rem">
             <div class="detail-section-title">Vision</div>
             <div class="detail-text">
-              <p>ARGOS est avant tout un <strong>laboratoire d'expérimentation</strong> autour de l'IA appliquée à la finance et à la prise de décision. Le succès du projet ne sera pas mesuré uniquement par sa rentabilité potentielle, mais par sa capacité à apprendre de ses erreurs, produire des décisions explicables, gérer le risque de façon rigoureuse et démontrer une méthodologie robuste d'amélioration continue.</p>
-              <p>L'objectif n'est pas de créer un robot miracle promettant des gains, mais une plateforme robuste mêlant intelligence artificielle, data analyse, gestion du risque et automatisation.</p>
+              <p>Le Bitcoin est souvent perçu comme réservé aux initiés ou aux spéculateurs audacieux. ARGOS part d'un postulat différent : <strong>démocratiser l'accès au BTC</strong> en rendant une stratégie rigoureuse disponible pour des petites sommes, sans que l'utilisateur ait besoin de comprendre les marchés.</p>
+              <p>L'objectif à terme : une <strong>app ou un bot installable</strong> autonome, transparent sur ses décisions, accessible à quelqu'un qui veut exposer 20€ au Bitcoin sans y passer ses nuits. Pas un robot miracle — une discipline algorithmique au service du plus grand nombre.</p>
             </div>
           </div>
         </div>
@@ -1096,46 +1126,61 @@ footer a{color:var(--muted);text-decoration:none}
       <p class="s-sub">Certifications obtenues et en cours, couvrant le commercial, le marketing digital et les outils métier.</p>
     </div>
     <div class="divider"></div>
-    <div class="cards-grid" style="margin-bottom:5rem">
-      <div class="card reveal" data-tilt="" style="--cg:rgba(255,204,51,0.07)" onclick="nav('certifications/score-iae')">
-        <div class="badge" style="background:var(--gold-dim);color:var(--gold);border:1px solid rgba(255,204,51,0.25)">À venir</div>
-        <div class="card-title">Score IAE Message</div>
-        <div class="card-org">IAE France</div>
-        <p class="card-desc">Test de positionnement en management, stratégie et culture générale économique. Résultat en cours — message à venir.</p>
-        <div class="card-more">Voir le détail <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"></path></svg></div>
-      </div>
+
+    <p class="s-label" style="margin-bottom:1rem">Obtenues</p>
+    <div class="cards-grid" style="margin-bottom:2.5rem">
       <div class="card reveal reveal-d1" data-tilt="" style="--cg:rgba(255,92,0,0.06)" onclick="nav('certifications/hubspot-inbound')">
-        <div class="badge" style="background:rgba(255,92,0,0.12);color:#ff5c00;border:1px solid rgba(255,92,0,0.2)">HubSpot Academy</div>
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:1rem">
+          <div class="badge" style="background:rgba(255,92,0,0.12);color:#ff5c00;border:1px solid rgba(255,92,0,0.2);margin:0">HubSpot Academy</div>
+          <span style="font-size:10px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:#4ade80;background:rgba(74,222,128,0.08);border:1px solid rgba(74,222,128,0.2);padding:3px 10px;border-radius:99px">✓ Obtenue</span>
+        </div>
         <div class="card-title">Inbound Sales</div>
         <div class="card-org">HubSpot · Certification internationale</div>
         <p class="card-desc">Méthodologie inbound appliquée à la vente : identification des leads, qualification, cycle de vente consultatif et closing orienté valeur.</p>
         <div class="card-more">Voir le détail <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"></path></svg></div>
       </div>
       <div class="card reveal reveal-d2" data-tilt="" style="--cg:rgba(255,92,0,0.06)" onclick="nav('certifications/hubspot-marketing')">
-        <div class="badge" style="background:rgba(255,92,0,0.12);color:#ff5c00;border:1px solid rgba(255,92,0,0.2)">HubSpot Academy</div>
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:1rem">
+          <div class="badge" style="background:rgba(255,92,0,0.12);color:#ff5c00;border:1px solid rgba(255,92,0,0.2);margin:0">HubSpot Academy</div>
+          <span style="font-size:10px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:#4ade80;background:rgba(74,222,128,0.08);border:1px solid rgba(74,222,128,0.2);padding:3px 10px;border-radius:99px">✓ Obtenue</span>
+        </div>
         <div class="card-title">Digital Marketing</div>
         <div class="card-org">HubSpot · Certification internationale</div>
         <p class="card-desc">Stratégie digitale complète : SEO, content marketing, social media, email marketing, analytics et optimisation de la conversion.</p>
         <div class="card-more">Voir le détail <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"></path></svg></div>
       </div>
-      <div class="card reveal reveal-d3" style="--cg:rgba(148,64,221,0.06);cursor:default">
-        <div class="card-year">Mars 2024</div>
+      <div class="card reveal reveal-d3" data-tilt="" style="--cg:rgba(148,64,221,0.06)">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:1rem">
+          <div class="badge badge-purple" style="margin:0">PIX · Mars 2024</div>
+          <span style="font-size:10px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:#4ade80;background:rgba(74,222,128,0.08);border:1px solid rgba(74,222,128,0.2);padding:3px 10px;border-radius:99px">✓ Obtenue</span>
+        </div>
         <div class="card-title">Certification PIX</div>
         <div class="card-org">Pix.fr · Compétences numériques</div>
-        <p class="card-desc">Certification nationale des compétences numériques : traitement de l'information, communication digitale, création de contenu, cybersécurité et environnement numérique.</p>
+        <p class="card-desc">Certification nationale des compétences numériques : traitement de l'information, communication digitale, création de contenu, cybersécurité.</p>
         <div class="tech-grid" style="margin-top:1rem">
           <span class="tech-tag">Traitement de l'info</span>
           <span class="tech-tag">Communication digitale</span>
           <span class="tech-tag">Cybersécurité</span>
         </div>
       </div>
-      <div class="card reveal reveal-d4" style="--cg:rgba(100,140,220,0.05);cursor:default;opacity:0.65">
+    </div>
+
+    <p class="s-label" style="margin-bottom:1rem">En cours ou à venir</p>
+    <div class="cards-grid" style="margin-bottom:5rem">
+      <div class="card reveal" data-tilt="" style="--cg:rgba(255,204,51,0.07);border-style:dashed" onclick="nav('certifications/score-iae')">
+        <div class="badge" style="background:var(--gold-dim);color:var(--gold);border:1px solid rgba(255,204,51,0.25)">Score IAE · Résultat à venir</div>
+        <div class="card-title">Score IAE Message</div>
+        <div class="card-org">IAE France</div>
+        <p class="card-desc">Test de positionnement en management, stratégie et culture générale économique. Résultat attendu prochainement.</p>
+        <div class="card-more">Voir le détail <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"></path></svg></div>
+      </div>
+      <div class="card reveal reveal-d1" style="--cg:rgba(100,140,220,0.05);cursor:default;border-style:dashed">
         <div class="badge badge-blue">À venir</div>
         <div class="card-title">TAGE MAGE</div>
-        <div class="card-org">Fondation Nationale pour l'Enseignement de la Gestion des Entreprises</div>
+        <div class="card-org">Fondation Nationale pour l'Enseignement de la Gestion</div>
         <p class="card-desc">Test d'aptitude aux études de gestion et de management. Requis pour les admissions en grandes écoles de commerce.</p>
       </div>
-      <div class="card reveal reveal-d5" style="--cg:rgba(80,180,160,0.05);cursor:default;opacity:0.65">
+      <div class="card reveal reveal-d2" style="--cg:rgba(80,180,160,0.05);cursor:default;border-style:dashed">
         <div class="badge badge-teal">À venir</div>
         <div class="card-title">TOEIC</div>
         <div class="card-org">ETS Global · Test of English for International Communication</div>
@@ -1345,24 +1390,56 @@ footer a{color:var(--muted);text-decoration:none}
     <div class="reveal">
       <p class="s-label">Contact</p>
       <h2 class="s-title">Construisons quelque chose</h2>
+      <p class="s-sub">Étudiant-entrepreneur disponible pour des missions, stages ou échanges. Basé à Rouen, ouvert à distance.</p>
     </div>
-    <div class="contact-box reveal reveal-d1">
-      <h2>Disponible pour<br><em>collaborer</em></h2>
-      <p>Étudiant-entrepreneur disponible pour des missions, stages ou échanges autour de l'entrepreneuriat, du développement commercial et du management.</p>
-      <div class="contact-links">
-        <a href="https://www.linkedin.com/in/nael-imberti" target="_blank" rel="noopener" class="contact-link">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path></svg>
-          LinkedIn
-        </a>
-        <a href="mailto:nael.imberti.io@gmail.com" class="contact-link">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-          Email
-        </a>
-        <a href="https://github.com/naelimberti" target="_blank" rel="noopener" class="contact-link">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path></svg>
-          GitHub
-        </a>
+    <div class="contact-grid">
+
+      <!-- Panneau principal -->
+      <div class="contact-panel contact-panel-main reveal reveal-d1">
+        <div class="contact-avail"><span class="dot-green"></span>Disponible · 2026–2027</div>
+        <h2>Parlons de votre<br><em>projet</em></h2>
+        <p class="contact-panel-desc">Je cherche à rejoindre une équipe ambitieuse pour prospecter, réseauter et faire grandir un projet en lequel je crois. Missions, alternance, stage — n'hésitez pas.</p>
+        <div class="contact-ctas">
+          <a href="https://www.linkedin.com/in/nael-imberti" target="_blank" rel="noopener" class="contact-cta">
+            <div class="contact-cta-icon li"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></div>
+            <div class="contact-cta-body"><span class="contact-cta-label">LinkedIn</span><span class="contact-cta-sub">linkedin.com/in/nael-imberti</span></div>
+            <svg class="contact-arrow" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="mailto:nael.imberti.io@gmail.com" class="contact-cta">
+            <div class="contact-cta-icon mail"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+            <div class="contact-cta-body"><span class="contact-cta-label">Email</span><span class="contact-cta-sub">nael.imberti.io@gmail.com</span></div>
+            <svg class="contact-arrow" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="https://github.com/naelimberti" target="_blank" rel="noopener" class="contact-cta">
+            <div class="contact-cta-icon gh"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></div>
+            <div class="contact-cta-body"><span class="contact-cta-label">GitHub</span><span class="contact-cta-sub">github.com/naelimberti</span></div>
+            <svg class="contact-arrow" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
       </div>
+
+      <!-- Panneau infos -->
+      <div class="contact-info-panel">
+        <div class="contact-info-card reveal reveal-d2">
+          <div class="contact-info-label">Recherche</div>
+          <div class="contact-info-content"><strong>Missions, alternance, stage</strong> à partir de 2026-2027. Profil commercial et entrepreneurial, background analytique.</div>
+          <div class="contact-tags">
+            <span class="contact-tag-item">Business Dev</span>
+            <span class="contact-tag-item">Startups à impact</span>
+            <span class="contact-tag-item">ESS</span>
+            <span class="contact-tag-item">Commercial</span>
+          </div>
+        </div>
+        <div class="contact-info-card reveal reveal-d3">
+          <div class="contact-info-label">Localisation</div>
+          <div class="contact-info-content"><strong>Rouen, Normandie</strong> · Mobilité France + ouvert au remote.</div>
+        </div>
+        <div class="contact-info-card reveal reveal-d4">
+          <div class="contact-info-label">En ce moment</div>
+          <div class="contact-info-content">L3 Gestion · IAE Rouen · SNEE Pépite Normandie. Développement de <strong>Silva Edita</strong> et d'<strong>ARGOS</strong>.</div>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
