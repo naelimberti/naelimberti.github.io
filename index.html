@@ -338,6 +338,17 @@ footer a{color:var(--muted);text-decoration:none}
         </div>
       </li>
       <li class="has-dropdown">
+        <a onclick="nav('certifications')" data-route="certifications">Certifications &amp; Compétences<svg class="dp-chevron" viewBox="0 0 10 10" fill="none"><path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <div class="dropdown">
+          <button class="dp-item dp-overview" onclick="nav('certifications')"><span class="dp-name">Toutes les certifications</span></button>
+          <button class="dp-item" onclick="nav('certifications/score-iae')"><span class="dp-name">Score IAE Message</span><span class="dp-sub">À venir</span></button>
+          <button class="dp-item" onclick="nav('certifications/hubspot-inbound')"><span class="dp-name">HubSpot Inbound Sales</span><span class="dp-sub">HubSpot Academy</span></button>
+          <button class="dp-item" onclick="nav('certifications/hubspot-marketing')"><span class="dp-name">HubSpot Digital Marketing</span><span class="dp-sub">HubSpot Academy</span></button>
+          <div style="border-top:1px solid var(--border);margin:5px 0 5px"></div>
+          <button class="dp-item" onclick="nav('competences')"><span class="dp-name">Compétences</span><span class="dp-sub">Vue d'ensemble</span></button>
+        </div>
+      </li>
+      <li class="has-dropdown">
         <a onclick="nav('contact')" data-route="contact">Contact<svg class="dp-chevron" viewBox="0 0 10 10" fill="none"><path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         <div class="dropdown">
           <a class="dp-item" href="mailto:nael.imberti.io@gmail.com"><span class="dp-name">✉ Email</span><span class="dp-sub">nael.imberti.io@gmail.com</span></a>
@@ -356,6 +367,8 @@ footer a{color:var(--muted);text-decoration:none}
     <li><a onclick="mobileNav('etudes')">Études</a></li>
     <li><a onclick="mobileNav('entrepreneur')">Entrepreneur</a></li>
     <li><a onclick="mobileNav('experiences')">Expériences</a></li>
+    <li><a onclick="mobileNav('certifications')">Certifications</a></li>
+    <li><a onclick="mobileNav('competences')">Compétences</a></li>
     <li><a onclick="mobileNav('contact')">Contact</a></li>
   </ul>
 </div>
@@ -1088,6 +1101,236 @@ footer a{color:var(--muted);text-decoration:none}
   </div>
 </div>
 
+<!-- ═══════════════════════════════════════ PAGE : CERTIFICATIONS ═══════════════════════════════════════ -->
+<div class="page" id="page-certifications">
+  <div class="container pt-hero">
+    <button class="back-btn" onclick="nav('')"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"></path></svg> Accueil</button>
+    <div class="reveal">
+      <p class="s-label">Certifications</p>
+      <h2 class="s-title">Compétences certifiées</h2>
+      <p class="s-sub">Certifications obtenues et en cours, couvrant le commercial, le marketing digital et les outils métier.</p>
+    </div>
+    <div class="divider"></div>
+    <div class="cards-grid" style="margin-bottom:5rem">
+      <div class="card reveal" data-tilt="" style="--cg:rgba(255,204,51,0.07)" onclick="nav('certifications/score-iae')">
+        <div class="badge" style="background:var(--gold-dim);color:var(--gold);border:1px solid rgba(255,204,51,0.25)">À venir</div>
+        <div class="card-title">Score IAE Message</div>
+        <div class="card-org">IAE France</div>
+        <p class="card-desc">Test de positionnement en management, stratégie et culture générale économique. Résultat en cours — message à venir.</p>
+        <div class="card-more">Voir le détail <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"></path></svg></div>
+      </div>
+      <div class="card reveal reveal-d1" data-tilt="" style="--cg:rgba(255,92,0,0.06)" onclick="nav('certifications/hubspot-inbound')">
+        <div class="badge" style="background:rgba(255,92,0,0.12);color:#ff5c00;border:1px solid rgba(255,92,0,0.2)">HubSpot Academy</div>
+        <div class="card-title">Inbound Sales</div>
+        <div class="card-org">HubSpot · Certification internationale</div>
+        <p class="card-desc">Méthodologie inbound appliquée à la vente : identification des leads, qualification, cycle de vente consultatif et closing orienté valeur.</p>
+        <div class="card-more">Voir le détail <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"></path></svg></div>
+      </div>
+      <div class="card reveal reveal-d2" data-tilt="" style="--cg:rgba(255,92,0,0.06)" onclick="nav('certifications/hubspot-marketing')">
+        <div class="badge" style="background:rgba(255,92,0,0.12);color:#ff5c00;border:1px solid rgba(255,92,0,0.2)">HubSpot Academy</div>
+        <div class="card-title">Digital Marketing</div>
+        <div class="card-org">HubSpot · Certification internationale</div>
+        <p class="card-desc">Stratégie digitale complète : SEO, content marketing, social media, email marketing, analytics et optimisation de la conversion.</p>
+        <div class="card-more">Voir le détail <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"></path></svg></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── SOUS-PAGE : Score IAE ─── -->
+<div class="page" id="page-certifications/score-iae">
+  <div class="container">
+    <div class="detail-header">
+      <button class="back-btn" onclick="nav('certifications')"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"></path></svg> Certifications</button>
+      <div class="detail-meta">
+        <span class="detail-tag" style="background:var(--gold-dim);color:var(--gold);border-color:rgba(255,204,51,0.25)">À venir</span>
+        <span class="detail-tag">IAE France</span>
+      </div>
+      <div class="detail-title">Score IAE Message</div>
+      <div class="detail-sub">Test d'admission aux IAE · France</div>
+      <p class="detail-desc">Le Score IAE Message est le test de référence pour l'accès aux Masters des IAE. Il évalue le raisonnement logique, la culture managériale et la communication professionnelle.</p>
+    </div>
+    <div class="detail-body">
+      <div class="detail-section">
+        <div class="detail-section-title">Résultat</div>
+        <div class="detail-text">
+          <p style="text-align:center;padding:3rem 0;color:var(--muted);font-size:0.95rem;font-style:italic">Résultat en attente — message à venir.</p>
+        </div>
+      </div>
+      <div class="detail-section">
+        <div class="detail-section-title">Domaines évalués</div>
+        <ul class="item-list">
+          <li>Raisonnement logique et analyse</li>
+          <li>Culture générale économique et managériale</li>
+          <li>Communication écrite professionnelle</li>
+          <li>Compréhension de textes en anglais</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── SOUS-PAGE : HubSpot Inbound Sales ─── -->
+<div class="page" id="page-certifications/hubspot-inbound">
+  <div class="container">
+    <div class="detail-header">
+      <button class="back-btn" onclick="nav('certifications')"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"></path></svg> Certifications</button>
+      <div class="detail-meta">
+        <span class="detail-tag" style="background:rgba(255,92,0,0.1);color:#ff5c00;border-color:rgba(255,92,0,0.2)">HubSpot Academy</span>
+        <span class="detail-tag">Certification internationale</span>
+      </div>
+      <div class="detail-title">HubSpot Inbound Sales</div>
+      <div class="detail-sub">HubSpot Academy · Certification commerciale</div>
+      <p class="detail-desc">Maîtrise de la méthodologie inbound appliquée à la vente : transformer les prospects en clients en alignant le processus de vente sur leur parcours d'achat.</p>
+    </div>
+    <div class="detail-body">
+      <div class="detail-section">
+        <div class="detail-section-title">Ce que cette certification m'a apporté</div>
+        <div class="detail-text">
+          <p>La certification Inbound Sales de HubSpot m'a donné un cadre structuré pour aborder la vente de manière consultative : <strong>identifier les bons prospects, comprendre leurs enjeux réels</strong>, construire une relation de confiance avant de proposer une solution.</p>
+          <p>Cette approche centrée sur la valeur et non sur le produit est directement appliquée dans mes expériences en développement commercial et dans mes projets entrepreneuriaux.</p>
+        </div>
+      </div>
+      <div class="detail-section">
+        <div class="detail-section-title">Compétences couvertes</div>
+        <ul class="item-list">
+          <li>Identification et qualification des leads inbound</li>
+          <li>Exploration des besoins et discovery call</li>
+          <li>Personnalisation du discours commercial selon le buyer journey</li>
+          <li>Techniques de closing orientées valeur</li>
+          <li>Utilisation du CRM HubSpot dans le cycle de vente</li>
+          <li>Suivi et relance sans friction</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── SOUS-PAGE : HubSpot Digital Marketing ─── -->
+<div class="page" id="page-certifications/hubspot-marketing">
+  <div class="container">
+    <div class="detail-header">
+      <button class="back-btn" onclick="nav('certifications')"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"></path></svg> Certifications</button>
+      <div class="detail-meta">
+        <span class="detail-tag" style="background:rgba(255,92,0,0.1);color:#ff5c00;border-color:rgba(255,92,0,0.2)">HubSpot Academy</span>
+        <span class="detail-tag">Certification internationale</span>
+      </div>
+      <div class="detail-title">HubSpot Digital Marketing</div>
+      <div class="detail-sub">HubSpot Academy · Certification marketing</div>
+      <p class="detail-desc">Stratégie marketing digitale complète : de l'acquisition à la fidélisation, en passant par le contenu, le SEO, les réseaux sociaux et l'analyse de données.</p>
+    </div>
+    <div class="detail-body">
+      <div class="detail-section">
+        <div class="detail-section-title">Ce que cette certification m'a apporté</div>
+        <div class="detail-text">
+          <p>Cette certification couvre l'ensemble de la chaîne digitale : <strong>attirer, convertir, conclure et fidéliser</strong>. Elle m'a permis de structurer une vision cohérente du marketing digital au-delà des outils, en comprenant comment chaque levier s'articule dans une stratégie globale.</p>
+          <p>Très complémentaire à la certification Inbound Sales pour piloter à la fois l'acquisition et la conversion sur des projets entrepreneuriaux et en startup.</p>
+        </div>
+      </div>
+      <div class="detail-section">
+        <div class="detail-section-title">Compétences couvertes</div>
+        <ul class="item-list">
+          <li>SEO on-page et stratégie de contenu</li>
+          <li>Social media marketing et community building</li>
+          <li>Email marketing et segmentation</li>
+          <li>Publicité digitale (Google Ads, Meta)</li>
+          <li>Analytics : lecture des KPIs, A/B testing, CRO</li>
+          <li>Marketing automation et workflows HubSpot</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ PAGE : COMPÉTENCES ═══════════════════════════════════════ -->
+<div class="page" id="page-competences">
+  <div class="container pt-hero">
+    <button class="back-btn" onclick="nav('')"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"></path></svg> Accueil</button>
+    <div class="reveal">
+      <p class="s-label">Vue d'ensemble</p>
+      <h2 class="s-title">Compétences</h2>
+      <p class="s-sub">Ce que je construis à travers mes études, mes expériences et mes projets entrepreneuriaux.</p>
+    </div>
+    <div class="divider"></div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;margin-bottom:5rem">
+
+      <div class="card reveal" style="--cg:rgba(148,64,221,0.08);cursor:default">
+        <div class="badge badge-purple">Commercial</div>
+        <div class="card-title" style="font-size:1.1rem;margin-bottom:1rem">Business Development</div>
+        <ul class="item-list">
+          <li>Prospection et gestion du pipeline commercial</li>
+          <li>Vente consultative et cycle inbound</li>
+          <li>Pitch et présentation à des décideurs</li>
+          <li>Développement réseau et partenariats</li>
+          <li>CRM HubSpot — suivi et relance</li>
+        </ul>
+      </div>
+
+      <div class="card reveal reveal-d1" style="--cg:rgba(255,204,51,0.07);cursor:default">
+        <div class="badge" style="background:var(--gold-dim);color:var(--gold);border:1px solid rgba(255,204,51,0.25)">Marketing</div>
+        <div class="card-title" style="font-size:1.1rem;margin-bottom:1rem">Marketing Digital</div>
+        <ul class="item-list">
+          <li>Stratégie de contenu et SEO</li>
+          <li>Social media marketing</li>
+          <li>Email marketing et automation</li>
+          <li>Analytics et lecture des KPIs</li>
+          <li>Étude de marché qualitative et quantitative</li>
+        </ul>
+      </div>
+
+      <div class="card reveal reveal-d2" style="--cg:rgba(100,140,220,0.07);cursor:default">
+        <div class="badge badge-blue">Entrepreneuriat</div>
+        <div class="card-title" style="font-size:1.1rem;margin-bottom:1rem">Création & Gestion de projet</div>
+        <ul class="item-list">
+          <li>Business model canvas et lean startup</li>
+          <li>Prévisionnel financier 3 ans</li>
+          <li>Analyse concurrentielle et positionnement</li>
+          <li>Statut juridique et formalités (SNEE)</li>
+          <li>Gestion de l'incertitude et pivots</li>
+        </ul>
+      </div>
+
+      <div class="card reveal" style="--cg:rgba(148,64,221,0.08);cursor:default">
+        <div class="badge badge-purple">Analyse</div>
+        <div class="card-title" style="font-size:1.1rem;margin-bottom:1rem">Quantitatif & Data</div>
+        <ul class="item-list">
+          <li>Statistiques descriptives et probabilités</li>
+          <li>Modélisation économique (micro / macro)</li>
+          <li>Analyse de données — Python, Excel/Sheets</li>
+          <li>Algèbre et analyse réelle</li>
+          <li>Méthodologie de recherche quantitative</li>
+        </ul>
+      </div>
+
+      <div class="card reveal reveal-d1" style="--cg:rgba(100,140,220,0.07);cursor:default">
+        <div class="badge badge-blue">Tech</div>
+        <div class="card-title" style="font-size:1.1rem;margin-bottom:1rem">Numérique & Dev</div>
+        <ul class="item-list">
+          <li>Développement web — HTML, CSS, JavaScript</li>
+          <li>Programmation Python</li>
+          <li>Compétences numériques certifiées (PIX)</li>
+          <li>Outils collaboratifs (Notion, Slack, Figma)</li>
+          <li>Sensibilité produit et UX</li>
+        </ul>
+      </div>
+
+      <div class="card reveal reveal-d2" style="--cg:rgba(255,204,51,0.07);cursor:default">
+        <div class="badge" style="background:var(--gold-dim);color:var(--gold);border:1px solid rgba(255,204,51,0.25)">Langues</div>
+        <div class="card-title" style="font-size:1.1rem;margin-bottom:1rem">Langues & Communication</div>
+        <ul class="item-list">
+          <li>Français — langue maternelle</li>
+          <li>Anglais — courant (18,6/20 Bac, usage pro)</li>
+          <li>Japonais — LV3, niveau intermédiaire (18,3/20 Bac)</li>
+          <li>Expression écrite et storytelling</li>
+          <li>Prise de parole en public et pitch</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</div>
+
 <!-- ═══════════════════════════════════════ PAGE : CONTACT ═══════════════════════════════════════ -->
 <div class="page" id="page-contact">
   <div class="container pt-hero" style="padding-bottom:6rem">
@@ -1141,6 +1384,11 @@ const ROUTES = {
   'experiences':         { page: 'experiences',            nav: 'experiences',   crumbs: [['Expériences','experiences']] },
   'experiences/boclab':  { page: 'experiences/boclab',     nav: 'experiences',   crumbs: [['Expériences','experiences'],['BOC LAB','']] },
   'experiences/atelier': { page: 'experiences/atelier',    nav: 'experiences',   crumbs: [['Expériences','experiences'],['Atelier Reflet','']] },
+  'certifications':            { page: 'certifications',              nav: 'certifications', crumbs: [['Certifications','certifications']] },
+  'certifications/score-iae': { page: 'certifications/score-iae',    nav: 'certifications', crumbs: [['Certifications','certifications'],['Score IAE','']] },
+  'certifications/hubspot-inbound': { page: 'certifications/hubspot-inbound', nav: 'certifications', crumbs: [['Certifications','certifications'],['Inbound Sales','']] },
+  'certifications/hubspot-marketing': { page: 'certifications/hubspot-marketing', nav: 'certifications', crumbs: [['Certifications','certifications'],['Digital Marketing','']] },
+  'competences':               { page: 'competences',                nav: 'certifications', crumbs: [['Compétences','competences']] },
   'contact':             { page: 'contact',                nav: 'contact',       crumbs: [['Contact','contact']] },
 };
 
