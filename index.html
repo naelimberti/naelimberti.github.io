@@ -51,7 +51,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;backdrop-filter:blur(16px);b
 @media(max-width:860px){.hero-split-inner{grid-template-columns:1fr;gap:2rem;padding-top:5rem;padding-bottom:4rem}}
 .hero-left{display:flex;flex-direction:column;align-items:flex-start}
 .hero-left .hero-tag{margin-bottom:2rem}
-.hero-name{font-family:var(--serif);font-size:clamp(2.6rem,4.2vw,4.5rem);font-weight:800;font-style:normal;line-height:1;letter-spacing:-0.03em;background:linear-gradient(115deg,#fff 0%,#e8d9ff 38%,var(--gold) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:block;margin-bottom:1.2rem;text-align:left;white-space:nowrap}
+.hero-name{font-family:var(--serif);font-size:clamp(2.6rem,4.2vw,4.5rem);font-weight:800;font-style:normal;line-height:1;letter-spacing:-0.03em;background-image:linear-gradient(115deg,#fff 0%,#f4ecff 22%,var(--gold) 50%,#f4ecff 78%,#fff 100%);background-size:var(--bandw,200px) 100%;background-repeat:repeat;background-position-x:0px;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;color:transparent;display:block;margin-bottom:1.2rem;text-align:left;white-space:nowrap;animation:band-move 5s linear infinite}
 .hero-role{font-family:var(--serif);font-size:clamp(1rem,1.7vw,1.45rem);font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:1.2rem;text-align:left;white-space:nowrap}
 .hero-left .hero-sub{font-family:var(--sans);font-style:normal;font-size:1rem;color:var(--muted);text-align:left;margin:0 0 2.8rem;line-height:1.85;font-weight:300;max-width:100%}
 .hero-right{display:flex;align-items:center;justify-content:center}
@@ -68,8 +68,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;backdrop-filter:blur(16px);b
 /* ── SECTION HEADER ── */
 .s-label{font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:0.6rem}
 .s-title{font-family:var(--serif);font-size:clamp(2rem,4.5vw,3.2rem);font-weight:700;line-height:1.06;letter-spacing:-0.025em;margin-bottom:0.8rem}
-/* ── GRADIENT TITRES ── */
-.s-title,.detail-title,.tl-title,.card-title,.hsc-title,.contact-box h2{background:linear-gradient(115deg,#fff 0%,#e8d9ff 42%,var(--gold) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+/* ── GRADIENT TITRES ANIMÉS ── */
+@keyframes band-move{from{background-position-x:0px}to{background-position-x:var(--bandw,200px)}}
+h1,h2,h3,.s-title,.detail-title,.tl-title,.card-title,.hsc-title,.contact-box h2,.detail-section-title,.detail-text strong,.item-list li strong,.nav-logo,.dp-name,.stat-num{background-image:linear-gradient(115deg,#fff 0%,#f4ecff 22%,var(--gold) 50%,#f4ecff 78%,#fff 100%);background-size:var(--bandw,200px) 100%;background-repeat:repeat;background-position-x:0px;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;color:transparent;animation:band-move 5s linear infinite}
+@media(prefers-reduced-motion:reduce){h1,h2,h3,.s-title,.detail-title,.tl-title,.card-title,.hsc-title,.contact-box h2,.detail-section-title,.detail-text strong,.item-list li strong,.nav-logo,.dp-name,.stat-num,.hero-name{animation:none}}
 .s-sub{font-size:1rem;color:var(--muted);max-width:580px;font-weight:300;line-height:1.8}
 .divider{width:40px;height:2px;background:linear-gradient(to right,var(--accent),var(--gold),transparent);margin:1.8rem 0}
 
@@ -105,7 +107,7 @@ h1 .role{display:block;color:var(--accent);font-weight:400}
 .home-section-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right,var(--accent),transparent);opacity:0;transition:opacity 0.25s}
 .home-section-card:hover{border-color:var(--border2);transform:translateY(-3px)}
 .home-section-card:hover::before{opacity:1}
-.hsc-num{font-family:var(--serif);font-size:2.8rem;font-weight:700;color:var(--gold-dim);line-height:1;margin-bottom:1rem;text-shadow:0 0 40px var(--gold-glow)}
+.hsc-num{font-family:var(--serif);font-size:2.8rem;font-weight:700;line-height:1;margin-bottom:1rem}
 .hsc-label{font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:0.5rem}
 .hsc-title{font-family:var(--serif);font-size:1.4rem;font-weight:700;margin-bottom:0.6rem}
 .hsc-desc{font-size:13px;color:var(--muted);line-height:1.7;font-weight:300}
@@ -296,6 +298,18 @@ footer a{color:var(--muted);text-decoration:none}
 .marquee-label{font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:1.2rem}
 /* stagger reveal helper */
 .reveal-d4{transition-delay:0.4s}.reveal-d5{transition-delay:0.5s}
+/* numeros horloge (cartes accueil) */
+.hsc-num{display:inline-flex;align-items:flex-start}
+.hsc-reel{display:inline-block;height:1em;line-height:1;overflow:hidden;vertical-align:top}
+.hsc-reel-inner{display:flex;flex-direction:column}
+.hsc-reel-inner>span{display:block;height:1em;line-height:1}
+.hsc-num.play .hsc-reel-inner{animation:reel-drop 1.05s cubic-bezier(.2,.85,.25,1.08) both}
+@keyframes reel-drop{from{transform:translateY(0)}to{transform:translateY(-3em)}}
+/* degrade connecte des stats (accueil) */
+@property --statshift{syntax:'<length>';inherits:false;initial-value:0px}
+#page-home .stats-row .stat-num{background-image:linear-gradient(90deg,var(--accent),var(--gold),var(--al),var(--gold),var(--accent));background-size:280px 100%;background-position-x:calc(0px - var(--statbase,0px) + var(--statshift));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;animation:stat-grad-flow 4.5s linear infinite}
+@keyframes stat-grad-flow{from{--statshift:0px}to{--statshift:280px}}
+@media(prefers-reduced-motion:reduce){#page-home .stats-row .stat-num{animation:none}.hsc-num.play .hsc-reel-inner{animation:none}}
 </style>
 </head>
 <body>
@@ -418,21 +432,21 @@ footer a{color:var(--muted);text-decoration:none}
 
       <div class="home-sections reveal" style="margin-top:3.5rem">
         <div class="home-section-card" data-tilt="" onclick="nav('etudes')">
-          <div class="hsc-num">01</div>
+          <div class="hsc-num">0<span class="hsc-reel"><span class="hsc-reel-inner"><span>8</span><span>9</span><span>0</span><span>1</span></span></span></div>
           <div class="hsc-label">Formation</div>
           <div class="hsc-title">Études</div>
           <p class="hsc-desc">IAE Rouen · Université de Rouen. Double cursus, réorientation stratégique vers l'entrepreneuriat.</p>
           <div class="hsc-arrow">Voir la formation <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"></path></svg></div>
         </div>
         <div class="home-section-card" data-tilt="" onclick="nav('entrepreneur')">
-          <div class="hsc-num">02</div>
+          <div class="hsc-num">0<span class="hsc-reel"><span class="hsc-reel-inner"><span>9</span><span>0</span><span>1</span><span>2</span></span></span></div>
           <div class="hsc-label">Projets</div>
           <div class="hsc-title">Étudiant-Entrepreneur</div>
           <p class="hsc-desc">Silva Edita primé au concours Proj'Impact, Naillies développé sur 6 mois au programme Jeunes Pousses, ARGOS en développement personnel. Trois démarches, trois approches.</p>
           <div class="hsc-arrow">Voir les projets <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"></path></svg></div>
         </div>
         <div class="home-section-card" data-tilt="" onclick="nav('experiences')">
-          <div class="hsc-num">03</div>
+          <div class="hsc-num">0<span class="hsc-reel"><span class="hsc-reel-inner"><span>0</span><span>1</span><span>2</span><span>3</span></span></span></div>
           <div class="hsc-label">Terrain</div>
           <div class="hsc-title">Expériences</div>
           <p class="hsc-desc">BOC LAB · Atelier Reflet d'Espace. Missions concrètes en gestion de projet et développement commercial.</p>
@@ -1457,6 +1471,8 @@ function render(hash) {
 
     // bind cursor spotlight + tilt
     bindCards(target);
+    applyBands(target);
+    if (document.getElementById('page-home').classList.contains('active')) initHomeDynamics(document.getElementById('page-home'));
   }, 50);
 }
 
@@ -1498,6 +1514,46 @@ function bindCards(scope) {
   });
 }
 
+// HOME DYNAMICS : dégradé chiffres connecté + numéros horloge
+function measureStatGradient(scope) {
+  const row = scope.querySelector('.stats-row');
+  if (!row) return;
+  const rr = row.getBoundingClientRect();
+  row.querySelectorAll('.stat-num').forEach(el => {
+    const r = el.getBoundingClientRect();
+    el.style.setProperty('--statbase', (r.left - rr.left) + 'px');
+  });
+}
+function initHomeDynamics(scope) {
+  measureStatGradient(scope);
+  scope.querySelectorAll('.hsc-num').forEach(n => {
+    if (!n.querySelector('.hsc-reel-inner')) return;
+    n.classList.remove('play');
+    void n.offsetWidth;
+    n.classList.add('play');
+  });
+}
+
+// ── BANDE D'OR : période = largeur de chaque élément ──
+const BAND_SEL = 'h1,h2,h3,.s-title,.detail-title,.tl-title,.card-title,.hsc-title,.contact-box h2,.detail-section-title,.detail-text strong,.item-list li strong,.nav-logo,.dp-name,.stat-num';
+function applyBands(scope) {
+  (scope || document).querySelectorAll(BAND_SEL).forEach(el => {
+    if (el.closest('#page-home') && el.classList.contains('stat-num')) return;
+    const w = Math.round(el.getBoundingClientRect().width);
+    if (w > 0) el.style.setProperty('--bandw', w + 'px');
+  });
+  const hn = (scope || document).querySelector('.hero-name');
+  if (hn) { const w = Math.round(hn.getBoundingClientRect().width); if (w > 0) hn.style.setProperty('--bandw', w + 'px'); }
+}
+document.querySelectorAll('.has-dropdown').forEach(dd => {
+  dd.addEventListener('mouseenter', () => applyBands(dd), { once: false });
+});
+window.addEventListener('resize', () => {
+  const h = document.getElementById('page-home');
+  if (h && h.classList.contains('active')) measureStatGradient(h);
+  applyBands(document);
+}, { passive: true });
+
 // ── SKILLS MARQUEE ──
 const SKILLS = ['Business Development','Entrepreneuriat','Pitch & Storytelling','Business Model Canvas','Étude de marché','Stratégie commerciale','Management','Finance d’entreprise','Gestion de projet','Go-to-market','Négociation','Impact & durabilité','Réseautage','Partenariats','ESS & économie durable'];
 (function buildMarquee() {
@@ -1529,6 +1585,7 @@ window.addEventListener('scroll', () => {
 
 window.addEventListener('hashchange', () => render(window.location.hash));
 render(window.location.hash || '#');
+applyBands(document);
 
 function openLightbox(src) {
   document.getElementById('lightbox-img').src = src;
