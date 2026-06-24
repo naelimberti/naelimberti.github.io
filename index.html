@@ -910,49 +910,71 @@ footer a{color:var(--muted);text-decoration:none}
       <p class="detail-desc">Bot multi-agents focalisé sur le Bitcoin, conçu pour fructifier des petites sommes et rendre cet univers accessible à tous. L'idée : que quelqu'un qui ne connaît rien aux marchés puisse bénéficier d'une stratégie rigoureuse, sans avoir à comprendre les rouages techniques.</p>
     </div>
     <div class="detail-body">
+      <div class="detail-section" style="margin-bottom:2.5rem">
+        <div class="detail-section-title">L'évolution du projet</div>
+        <div class="detail-text">
+          <p>ARGOS a commencé comme un bot de trading actif sur le BTC (stratégie momentum, RSI, ATR stop-loss) et a traversé trois pivots majeurs avant d'arriver à sa forme actuelle. Chaque pivot a été décidé sur la base de backtests rigoureux : 8 ans de données, bougies 15min et 1h, via l'API publique Binance.</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:1rem;margin-top:1.5rem">
+          <div style="padding:1rem 1.2rem;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:10px;border-left:3px solid rgba(183,110,245,0.4)">
+            <div style="font-size:0.78rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--al);margin-bottom:0.4rem">v4 · Momentum</div>
+            <div style="color:var(--t2);font-size:0.93rem">RSI + momentum + détection de régime. Win rate structurellement bloqué à 29% sur 8 ans, P&L -81.9%. Signal d'entrée sans valeur directionnelle. <strong style="color:var(--t1)">Abandonné.</strong></div>
+          </div>
+          <div style="padding:1rem 1.2rem;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:10px;border-left:3px solid rgba(183,110,245,0.4)">
+            <div style="font-size:0.78rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--al);margin-bottom:0.4rem">v5 · Mean Reversion</div>
+            <div style="color:var(--t2);font-size:0.93rem">Contre-tendance sur RSI extrêmes. Win rate 71.9% mais TP trop petit — les gains ne couvrent pas les pertes. P&L -59.2%. <strong style="color:var(--t1)">Abandonné.</strong></div>
+          </div>
+          <div style="padding:1rem 1.2rem;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:10px;border-left:3px solid rgba(183,110,245,0.4)">
+            <div style="font-size:0.78rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--al);margin-bottom:0.4rem">v6 · Bull Reversion</div>
+            <div style="color:var(--t2);font-size:0.93rem">LONG uniquement en marché haussier (SMA200j), sur RSI &lt; 25. Trop peu de signaux, toutes les configurations négatives. P&L -30.5%. <strong style="color:var(--t1)">Abandonné.</strong></div>
+          </div>
+          <div style="padding:1rem 1.2rem;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:10px;border-left:3px solid var(--gold)">
+            <div style="font-size:0.78rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--gold);margin-bottom:0.4rem">v7 · Smart DCA · Stratégie actuelle</div>
+            <div style="color:var(--t2);font-size:0.93rem">Accumulation mensuelle de BTC (10€/mois), ajustée selon le régime de marché et le RSI. Sur 8.8 ans de backtest : <strong style="color:var(--t1)">+32.6 points de ROI vs Simple DCA</strong> en investissant 70€ de moins (358.5% vs 325.9%). Paper trading actif.</div>
+          </div>
+        </div>
+      </div>
       <div class="two-col">
         <div>
           <div class="detail-section">
-            <div class="detail-section-title">Architecture multi-agents</div>
+            <div class="detail-section-title">Principe du Smart DCA</div>
             <ul class="item-list">
-              <li><strong>Market Scanner</strong> · analyse les marchés et détecte les opportunités potentielles</li>
-              <li><strong>Strategy Agent</strong> · génère des scénarios de trading à partir de signaux techniques</li>
-              <li><strong>Risk Manager</strong> · valide ou bloque les décisions selon des règles strictes de gestion du risque</li>
-              <li><strong>Paper Trading Agent</strong> · exécute les stratégies en simulation</li>
-              <li><strong>Learning Agent</strong> · analyse les résultats, identifie les erreurs et propose des améliorations</li>
-              <li><strong>Critic Agent</strong> · remet en question les stratégies pour éviter les biais et le surapprentissage</li>
-              <li><strong>Execution Agent</strong> · responsable de l'exécution, uniquement en mode simulé dans les premières phases</li>
+              <li><strong>Bear market</strong> (prix &lt; SMA200j) · conserver le cash, ne pas acheter</li>
+              <li><strong>RSI &lt; 20</strong> · acheter 60% du budget restant (dip extrême)</li>
+              <li><strong>RSI &lt; 35</strong> · acheter 40% du budget restant (dip normal)</li>
+              <li><strong>RSI 35–70</strong> · DCA standard (montant mensuel de base)</li>
+              <li><strong>RSI &gt; 70</strong> · DCA réduit à 50% (BTC cher, on accumule quand même)</li>
+              <li><strong>Fin de mois</strong> · déployer 100% du budget restant en bull market</li>
             </ul>
           </div>
-          <div class="detail-section" style="margin-top:2.5rem">
+          <div class="detail-section" style="margin-top:2rem">
             <div class="detail-section-title">Vision</div>
             <div class="detail-text">
-              <p>Le Bitcoin est souvent perçu comme réservé aux initiés ou aux spéculateurs audacieux. ARGOS part d'un postulat différent : <strong>démocratiser l'accès au BTC</strong> en rendant une stratégie rigoureuse disponible pour des petites sommes, sans que l'utilisateur ait besoin de comprendre les marchés.</p>
-              <p>L'objectif à terme : une <strong>app ou un bot installable</strong> autonome, transparent sur ses décisions, accessible à quelqu'un qui veut exposer 20€ au Bitcoin sans y passer ses nuits. Pas un robot miracle, une discipline algorithmique au service du plus grand nombre.</p>
+              <p>Le Bitcoin est souvent perçu comme réservé aux initiés. ARGOS part d'un postulat différent : rendre une stratégie rigoureuse disponible pour des petites sommes, sans que l'utilisateur ait besoin de comprendre les marchés.</p>
+              <p>Objectif à terme : un bot autonome et transparent, accessible à quelqu'un qui veut exposer 20€ au Bitcoin sans y passer ses nuits. Pas un robot miracle — une discipline algorithmique.</p>
             </div>
           </div>
         </div>
         <div>
           <div class="detail-section">
-            <div class="detail-section-title">Objectifs techniques</div>
+            <div class="detail-section-title">Architecture</div>
             <ul class="item-list">
-              <li>Développer une architecture multi-agents évolutive</li>
-              <li>Construire un moteur de backtesting et de paper trading</li>
-              <li>Créer un système d'apprentissage continu basé sur les performances passées</li>
-              <li>Intégrer des tableaux de bord de suivi des performances et du risque</li>
-              <li>Étudier les limites réelles face aux frais, au spread, au slippage et à la volatilité</li>
+              <li>Python 3.11 · SQLite (local) / PostgreSQL Supabase (prod)</li>
+              <li>Données marché : CoinGecko (live) + Binance API (backtesting)</li>
+              <li>Dashboard : Streamlit · Déploiement : Fly.io</li>
+              <li>136 tests pytest · Paper trading uniquement</li>
             </ul>
           </div>
           <div class="detail-section" style="margin-top:2rem">
-            <div class="detail-section-title">Stack technique</div>
+            <div class="detail-section-title">Compétences mobilisées</div>
             <div class="tech-grid">
               <span class="tech-tag">Vibe coding</span>
-              <span class="tech-tag">Programmation web</span>
+              <span class="tech-tag">Python</span>
               <span class="tech-tag">Backtesting</span>
-              <span class="tech-tag">Architecture multi-agents</span>
-              <span class="tech-tag">Algèbre</span>
               <span class="tech-tag">Statistiques</span>
-              <span class="tech-tag">Microéconomie / Macroéconomie</span>
+              <span class="tech-tag">Gestion du risque</span>
+              <span class="tech-tag">Architecture logicielle</span>
+              <span class="tech-tag">Paper trading</span>
             </div>
           </div>
         </div>
