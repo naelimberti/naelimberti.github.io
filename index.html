@@ -379,6 +379,7 @@ footer a{color:var(--muted);text-decoration:none}
         <div class="dropdown">
           <button class="dp-item dp-overview" onclick="nav('experiences')"><span class="dp-name">Toutes les expériences</span></button>
           <button class="dp-item" onclick="nav('experiences')"><span class="dp-name">Responsable Développement Commercial</span><span class="dp-sub">Junior Entreprise · IAE Rouen</span></button>
+          <button class="dp-item" onclick="nav('experiences/vacataire')"><span class="dp-name">Étudiant vacataire · Chargé d'accueil</span><span class="dp-sub">Université de Rouen · 2026–2027</span></button>
           <button class="dp-item" onclick="nav('experiences/boclab')"><span class="dp-name">Bras droit du dirigeant</span><span class="dp-sub">BOC LAB</span></button>
         </div>
       </li>
@@ -953,7 +954,7 @@ footer a{color:var(--muted);text-decoration:none}
     <div class="reveal">
       <p class="s-label">Terrain</p>
       <h2 class="s-title">Expériences</h2>
-      <p class="s-sub">Stage chez BOC LAB : pilotage d'un projet de création d'école de magie, en position de bras droit du dirigeant.</p>
+      <p class="s-sub">Stage chez BOC LAB, vacation à l'Université de Rouen et mission Junior Entreprise à l'IAE.</p>
     </div>
     <div class="divider"></div>
     <div class="timeline" style="margin-bottom:5rem">
@@ -967,7 +968,22 @@ footer a{color:var(--muted);text-decoration:none}
         <p class="tl-desc">Détails à compléter.</p>
       </div>
 
-      <div class="tl-item reveal">
+      <div class="tl-item reveal reveal-d1">
+        <div class="tl-dot"></div>
+        <div class="tl-year">Juil. 2026 · Juin 2027 · Vacation · 2 contrats</div>
+        <div class="tl-title">Étudiant vacataire · Chargé d'accueil</div>
+        <div class="tl-org">Université de Rouen Normandie</div>
+        <p class="tl-desc">Accueil et intégration des étudiants internationaux primo-entrants dans leurs démarches administratives. Deux contrats : juillet–août 2026, puis septembre 2026–juin 2027.</p>
+        <div class="tl-tags">
+          <span class="tag">Accueil</span>
+          <span class="tag">Étudiants internationaux</span>
+          <span class="tag">Communication interculturelle</span>
+          <span class="tag">Démarches administratives</span>
+        </div>
+        <button class="tl-more" onclick="nav('experiences/vacataire')">Voir le détail <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"></path></svg></button>
+      </div>
+
+      <div class="tl-item reveal reveal-d2">
         <div class="tl-dot"></div>
         <div class="tl-year">Juin · Juillet 2026</div>
         <div class="tl-title">Bras droit du dirigeant</div>
@@ -983,6 +999,60 @@ footer a{color:var(--muted);text-decoration:none}
       </div>
 
 
+    </div>
+  </div>
+</div>
+
+<!-- ─── SOUS-PAGE : VACATAIRE ─── -->
+<div class="page" id="page-experiences/vacataire">
+  <div class="container">
+    <div class="detail-header">
+      <button class="back-btn" onclick="nav('experiences')"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"></path></svg> Expériences</button>
+      <div class="detail-meta">
+        <span class="detail-tag">Vacation · 2 contrats</span>
+        <span class="detail-tag">Juil. 2026 · Juin 2027</span>
+        <span class="detail-tag">Université de Rouen</span>
+      </div>
+      <div class="detail-title">Étudiant vacataire<br>Chargé d'accueil</div>
+      <div class="detail-sub">Université de Rouen Normandie</div>
+      <p class="detail-desc">Accueil et accompagnement des étudiants internationaux primo-entrants dans leurs démarches administratives à l'arrivée à l'université.</p>
+    </div>
+    <div class="detail-body">
+      <div class="two-col">
+        <div>
+          <div class="detail-section">
+            <div class="detail-section-title">Contexte</div>
+            <div class="detail-text">
+              <p>Mission de vacation à l'Université de Rouen Normandie, en charge de l'<strong>accueil des étudiants internationaux primo-entrants</strong> : accompagnement dans leurs premières démarches administratives, orientation sur le campus et facilitation de leur intégration.</p>
+              <p>Deux contrats successifs : <strong>1er juillet – 31 août 2026</strong> pour la période estivale, puis <strong>1er septembre 2026 – 30 juin 2027</strong> pour les événements et missions ponctuelles sur l'année universitaire.</p>
+            </div>
+          </div>
+          <div class="detail-section" style="margin-top:2rem">
+            <div class="detail-section-title">Missions</div>
+            <ul class="item-list">
+              <li>Accueil physique des étudiants internationaux primo-entrants</li>
+              <li>Accompagnement dans les démarches administratives à l'arrivée</li>
+              <li>Orientation sur le campus et présentation des services universitaires</li>
+              <li>Facilitation de l'intégration dans l'environnement académique français</li>
+              <li>Participation aux événements d'accueil et d'intégration sur l'année</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="detail-section">
+            <div class="detail-section-title">Compétences mobilisées</div>
+            <div class="tech-grid">
+              <span class="tech-tag">Accueil et relation publique</span>
+              <span class="tech-tag">Communication interculturelle</span>
+              <span class="tech-tag">Anglais professionnel</span>
+              <span class="tech-tag">Démarches administratives</span>
+              <span class="tech-tag">Écoute active</span>
+              <span class="tech-tag">Gestion de flux</span>
+              <span class="tech-tag">Travail en équipe</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -1407,6 +1477,7 @@ const ROUTES = {
   'entrepreneur/naillies':{ page: 'entrepreneur/naillies', nav: 'entrepreneur',  crumbs: [['Entrepreneur','entrepreneur'],['Naillies','']] },
   'entrepreneur/argos':  { page: 'entrepreneur/argos',     nav: 'entrepreneur',  crumbs: [['Entrepreneur','entrepreneur'],['ARGOS','']] },
   'experiences':         { page: 'experiences',            nav: 'experiences',   crumbs: [['Expériences','experiences']] },
+  'experiences/vacataire': { page: 'experiences/vacataire', nav: 'experiences',   crumbs: [['Expériences','experiences'],['Vacataire','']] },
   'experiences/boclab':  { page: 'experiences/boclab',     nav: 'experiences',   crumbs: [['Expériences','experiences'],['BOC LAB','']] },
   'certifications':            { page: 'certifications',              nav: 'certifications', crumbs: [['Certifications','certifications']] },
   'certifications/score-iae': { page: 'certifications/score-iae',    nav: 'certifications', crumbs: [['Certifications','certifications'],['Score IAE','']] },
