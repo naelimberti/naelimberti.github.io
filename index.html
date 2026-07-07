@@ -979,6 +979,13 @@ footer a{color:var(--muted);text-decoration:none}
         <div class="tl-title">Responsable Développement Commercial</div>
         <div class="tl-org">Junior Entreprise · IAE Rouen Normandie</div>
         <p class="tl-desc">Prise de fonction prévue à la rentrée 2026. Objectif : développer la prospection, les partenariats et l'acquisition de missions pour la Junior Entreprise de l'IAE Rouen.</p>
+        <div class="tl-tags">
+          <span class="tag">Prospection</span>
+          <span class="tag">Partenariats</span>
+          <span class="tag">Développement commercial</span>
+          <span class="tag">Junior Entreprise</span>
+        </div>
+        <button class="tl-more" onclick="nav('experiences/junior-entreprise')">Voir le détail <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"></path></svg></button>
       </div>
 
       <div class="tl-item reveal reveal-d1">
@@ -1013,6 +1020,60 @@ footer a{color:var(--muted);text-decoration:none}
       </div>
 
 
+    </div>
+  </div>
+</div>
+
+<!-- ─── SOUS-PAGE : JUNIOR ENTREPRISE ─── -->
+<div class="page" id="page-experiences/junior-entreprise">
+  <div class="container">
+    <div class="detail-header">
+      <button class="back-btn" onclick="nav('experiences')"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"></path></svg> Expériences</button>
+      <div class="detail-meta">
+        <span class="detail-tag">À venir · Rentrée 2026</span>
+        <span class="detail-tag">Sept. 2026 · Juin 2027</span>
+        <span class="detail-tag">IAE Rouen Normandie</span>
+      </div>
+      <div class="detail-title">Responsable<br>Développement Commercial</div>
+      <div class="detail-sub">Junior Entreprise · IAE Rouen Normandie</div>
+      <p class="detail-desc">Prise de fonction prévue à la rentrée 2026. Objectif : développer la prospection, les partenariats et l'acquisition de missions pour la Junior Entreprise de l'IAE Rouen.</p>
+    </div>
+    <div class="detail-body">
+      <div class="two-col">
+        <div>
+          <div class="detail-section">
+            <div class="detail-section-title">Contexte</div>
+            <div class="detail-text">
+              <p>La <strong>Junior Entreprise de l'IAE Rouen</strong> est une association étudiante qui réalise des missions de conseil et d'études pour des entreprises et organisations. En tant que Responsable Développement Commercial, je serai en charge de générer et développer l'activité de la structure.</p>
+              <p>Ce rôle me permettra de mettre en pratique directement des compétences de business development dans un cadre réel : identifier des prospects, construire des relations durables et concrétiser des partenariats.</p>
+            </div>
+          </div>
+          <div class="detail-section" style="margin-top:2rem">
+            <div class="detail-section-title">Missions prévues</div>
+            <ul class="item-list">
+              <li>Prospection de nouvelles entreprises clientes</li>
+              <li>Développement et entretien des partenariats</li>
+              <li>Acquisition et qualification de missions de conseil</li>
+              <li>Représentation de la Junior Entreprise auprès des acteurs économiques locaux</li>
+              <li>Contribution à la stratégie commerciale et aux objectifs annuels</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="detail-section">
+            <div class="detail-section-title">Compétences mobilisées</div>
+            <div class="tech-grid">
+              <span class="tech-tag">Prospection commerciale</span>
+              <span class="tech-tag">Développement partenariats</span>
+              <span class="tech-tag">Pitch et négociation</span>
+              <span class="tech-tag">Gestion de la relation client</span>
+              <span class="tech-tag">Stratégie commerciale</span>
+              <span class="tech-tag">Travail en équipe</span>
+              <span class="tech-tag">Représentation institutionnelle</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -1488,6 +1549,7 @@ const ROUTES = {
   'entrepreneur/naillies':{ page: 'entrepreneur/naillies', nav: 'entrepreneur',  crumbs: [['Entrepreneur','entrepreneur'],['Naillies','']] },
   'entrepreneur/argos':  { page: 'entrepreneur/argos',     nav: 'entrepreneur',  crumbs: [['Entrepreneur','entrepreneur'],['ARGOS','']] },
   'experiences':         { page: 'experiences',            nav: 'experiences',   crumbs: [['Expériences','experiences']] },
+  'experiences/junior-entreprise': { page: 'experiences/junior-entreprise', nav: 'experiences', crumbs: [['Expériences','experiences'],['Junior Entreprise','']] },
   'experiences/vacataire': { page: 'experiences/vacataire', nav: 'experiences',   crumbs: [['Expériences','experiences'],['Vacataire','']] },
   'experiences/boclab':  { page: 'experiences/boclab',     nav: 'experiences',   crumbs: [['Expériences','experiences'],['BOC LAB','']] },
   'certifications':            { page: 'certifications',              nav: 'certifications', crumbs: [['Certifications','certifications']] },
