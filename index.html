@@ -1488,7 +1488,9 @@ footer a{color:var(--muted);text-decoration:none}
 </footer>
 
 <script>
-  let currentLang = localStorage.getItem('lang') || 'fr';
+  const _urlLang = new URLSearchParams(window.location.search).get('lang');
+  let currentLang = _urlLang || localStorage.getItem('lang') || 'fr';
+  if (_urlLang) localStorage.setItem('lang', _urlLang);
 
 // ── ROUTER ──────────────────────────────────────────────────────────────────
 const ROUTES = {
