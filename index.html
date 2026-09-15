@@ -298,7 +298,7 @@ footer a{color:var(--muted);text-decoration:none}
 .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
 .hamburger.open span:nth-child(2){opacity:0}
 .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-@media(max-width:600px){.hamburger{display:flex}}
+@media(max-width:600px){.hamburger{display:flex}.lang-toggle{display:none}}
 /* ── MOBILE MENU ── */
 .mobile-menu{display:none;position:fixed;top:60px;left:0;right:0;background:rgba(8,8,16,0.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);z-index:199;padding:1.5rem 2rem 2rem}
 .mobile-menu.open{display:block;animation:fadein 0.2s ease-out}
@@ -437,6 +437,10 @@ footer a{color:var(--muted);text-decoration:none}
     <li><a onclick="mobileNav('competences')" data-i18n="dp.competences">Compétences</a></li>
     <li><a onclick="mobileNav('contact')" data-i18n="nav.contact">Contact</a></li>
   </ul>
+  <div class="lang-toggle" style="margin-top:1.5rem">
+    <button class="lang-btn" id="btnFrMob" onclick="setLang('fr')">FR</button>
+    <button class="lang-btn" id="btnEnMob" onclick="setLang('en')">EN</button>
+  </div>
 </div>
 
 <!-- ═══════════════════════════════════════ PAGE : HOME ═══════════════════════════════════════ -->
@@ -1985,8 +1989,8 @@ function applyTranslations() {
 function setLang(lang) {
   currentLang = lang;
   localStorage.setItem('lang', lang);
-  document.getElementById('btnFr').classList.toggle('active', lang === 'fr');
-  document.getElementById('btnEn').classList.toggle('active', lang === 'en');
+  ['btnFr','btnFrMob'].forEach(id => { const el = document.getElementById(id); if (el) el.classList.toggle('active', lang === 'fr'); });
+  ['btnEn','btnEnMob'].forEach(id => { const el = document.getElementById(id); if (el) el.classList.toggle('active', lang === 'en'); });
   applyTranslations();
   buildMarquee();
   render(window.location.hash || '#');
@@ -1994,8 +1998,8 @@ function setLang(lang) {
 
 // Init
 (function() {
-  document.getElementById(currentLang === 'en' ? 'btnEn' : 'btnFr').classList.add('active');
-  document.getElementById(currentLang === 'en' ? 'btnFr' : 'btnEn').classList.remove('active');
+  ['btnFr','btnFrMob'].forEach(id => { const el = document.getElementById(id); if (el) el.classList.toggle('active', currentLang === 'fr'); });
+  ['btnEn','btnEnMob'].forEach(id => { const el = document.getElementById(id); if (el) el.classList.toggle('active', currentLang === 'en'); });
   applyTranslations();
 })();
 </script>
