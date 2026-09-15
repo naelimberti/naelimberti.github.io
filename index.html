@@ -1670,14 +1670,14 @@ window.addEventListener('resize', () => {
 }, { passive: true });
 
 // ── SKILLS MARQUEE ──
-const SKILLS_FR = [‘Business Development’,’Entrepreneuriat’,’Pitch & Storytelling’,’Business Model Canvas’,’Étude de marché’,’Stratégie commerciale’,’Management’,’Finance d’entreprise’,’Gestion de projet’,’Go-to-market’,’Négociation’,’Impact & durabilité’,’Réseautage’,’Partenariats’,’ESS & économie durable’];
-const SKILLS_EN = [‘Business Development’,’Entrepreneurship’,’Pitch & Storytelling’,’Business Model Canvas’,’Market Research’,’Commercial Strategy’,’Management’,’Corporate Finance’,’Project Management’,’Go-to-market’,’Negotiation’,’Impact & Sustainability’,’Networking’,’Partnerships’,’Social Economy’];
+const SKILLS_FR = ['Business Development','Entrepreneuriat','Pitch & Storytelling','Business Model Canvas','Étude de marché','Stratégie commerciale','Management',"Finance d'entreprise",'Gestion de projet','Go-to-market','Négociation','Impact & durabilité','Réseautage','Partenariats','ESS & économie durable'];
+const SKILLS_EN = ['Business Development','Entrepreneurship','Pitch & Storytelling','Business Model Canvas','Market Research','Commercial Strategy','Management','Corporate Finance','Project Management','Go-to-market','Negotiation','Impact & Sustainability','Networking','Partnerships','Social Economy'];
 function buildMarquee() {
-  const track = document.getElementById(‘skillTrack’);
+  const track = document.getElementById('skillTrack');
   if (!track) return;
-  const skills = currentLang === ‘en’ ? SKILLS_EN : SKILLS_FR;
+  const skills = currentLang === 'en' ? SKILLS_EN : SKILLS_FR;
   const chip = s => `<span class="mq-chip"><span class="d"></span>${s}</span>`;
-  track.innerHTML = (skills.map(chip).join(‘’)).repeat(2);
+  track.innerHTML = (skills.map(chip).join('')).repeat(2);
 }
 buildMarquee();
 
